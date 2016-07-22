@@ -1,0 +1,42 @@
+﻿@using HuskyRescue.Web.HtmlHelpers
+@model HuskyRescue.ViewModel.SystemSetting.Edit
+
+<div class="row">
+	<div class="large-12 columns">
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+
+			<div class="row">
+				<div class="large-6 small-12 small-centered large-centered columns"><h2>Edit System Setting</h2></div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.Name, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.Name)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.Value, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.Value)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextAreaFor(m => m.Notes)
+					@Html.ValidationMessageFor(m => m.Notes)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<input type="submit" value="Save" class="button small success" />
+				</div>
+			</div>
+		}
+
+		<div>
+			@Html.ActionLink("Back to List", "Index")
+		</div>
+	</div>
+</div>

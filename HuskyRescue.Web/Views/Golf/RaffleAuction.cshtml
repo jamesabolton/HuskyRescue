@@ -1,0 +1,32 @@
+﻿@Html.Partial("_Menu")
+@section scripts {
+	<script type="text/javascript">
+		$(document).ready(function ($) {
+			// Get current url
+			// Select an a element that has the matching href and apply a class of 'active'. Also prepend a - to the content of the link
+			var url = window.location.pathname;
+			$('.golf-nav dd a[href="' + url + '"]').parent().addClass('active');
+		});
+	</script>
+}
+
+<div class="row">
+	<div class="large-6 columns">
+		<h3 class="subheader">Silent Auction Items</h3>
+		<ul class="square">
+			<li>Information coming soon</li>
+		</ul>
+	</div>
+	<div class="large-6 columns">
+		<h3 class="subheader">Raffle Items</h3>
+		<ul class="circle">
+			<li>Samsung 55" Class 1080p LED SMART TV</li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns" style="text-align:center">
+		<h4>Check back soon for updates as we collect more auction and raffle items.</h4>
+	</div>
+</div>
+

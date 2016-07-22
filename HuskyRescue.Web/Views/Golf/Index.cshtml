@@ -1,0 +1,96 @@
+﻿@*@Html.Partial("_Menu")*@
+@section scripts {
+	<script type="text/javascript">
+		$(document).ready(function ($) {
+			// Get current url
+			// Select an a element that has the matching href and apply a class of 'active'. Also prepend a - to the content of the link
+			var url = window.location.pathname;
+			$('.golf-nav dd a[href="' + url + '"]').parent().addClass('active');
+		});
+	</script>
+}
+@Html.Partial("_Menu")
+
+
+@*<div class="row">
+	<div class="large-12 medium-12 small-12 columns">
+		<h1>
+			2016 tournament information coming soon!
+		</h1>
+	</div>
+</div>*@
+
+<div class="row">
+	<div class="large-3 medium-3 columns">
+		<p>
+			<img src="/Content/Images/Controllers/Golf/DSC00002a.jpg" />
+		</p>
+	</div>
+	<div class="large-6 medium-6 columns">
+		<p>
+			We'd like to invite you to be part of Texas Husky Rescue's 6<sup>th</sup> Annual Golf Tournament.  This is a great opportunity for you and your business to gain great exposure all while helping a worthy cause.  And what an outstanding course to play - <a href="http://www.coyoteridgegolfclub.com/" target="_blank">Coyote Ridge Golf Club</a>!  You don't want to miss this opportunity, so please consider supporting us by playing, sponsoring or donating.
+			@*We'd like to invite you to be part of Texas Husky Rescue's 6<sup>th</sup> Annual Golf Tournament Sponsored by Red Velvet Inn.  This is a great opportunity for you and your business to gain great exposure all while helping a worthy cause.  And what an outstanding course to play - <a href="http://www.thetributegc.com/" target="_blank">The Tribute Golf Club</a>!  With it's breathtaking views of Lake Lewisville and it's perfect Bentgrass greens and wide fairways, it's no wonder Avid Golfer ranked it the #3 Best Overall Golf Club and the Best Elite Course!  You don't want to miss this opportunity, so please consider supporting us by playing, sponsoring or donating.*@
+		</p>
+
+		<ul class="no-style-list text-center">
+			<li class=""><h4>Coyote Ridge Golf Club</h4></li>
+			<li class="">(972) 395-0786</li>
+			<li class=""><a href="http://www.coyoteridgegolfclub.com">www.coyoteridgegolfclub.com</a></li>
+			<li class="">
+				<a href="https://goo.gl/KjVxmH" target="_blank">
+					<span class="">1640 West Hebron Parkway</span>
+					<span class="">Carrollton</span>,
+					<span class="">TX</span>,
+					<span class="">75010</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="large-3 medium-3 columns">
+		<p>
+			<img src="/Content/Images/Controllers/Golf/DSC09964a.jpg" />
+		</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-1 columns">&nbsp;</div>
+	<div class="large-3 medium-3 columns">
+		<ul class="no-style-list text-center">
+			<li class="">
+				<div><h5>Event Schedule</h5></div>
+				<div><span><strong>When: </strong>Friday 09-30-2015</span></div>
+				<div><span><strong>Registration: </strong>11:30am</span></div>
+				<div><span><strong>Shotgun Start: </strong>1:00pm</span></div>
+				<div><span><strong>Banquet: </strong>6:00pm</span></div>
+			</li>
+		</ul>
+	</div>
+	<div class="large-4 medium-6 columns">
+		<ul class="no-style-list text-center">
+			<li class="">
+				<div><h5>Cost</h5></div>
+				<div><span><strong>Foursome: </strong>$500</span></div>
+				<div><span><strong>Individual: </strong>$125</span></div>
+				<div><span><strong>Banquet Only: </strong>$35</span></div>
+			</li>
+		</ul>
+	</div>
+	<div class="large-3 medium-3 columns">
+		<ul class="no-style-list text-center">
+			<li class="">
+				<div><h5>What's Included</h5></div>
+				<div><span>Green fee</span></div>
+				<div><span>Cart fee</span></div>
+				<div><span>Range Balls</span></div>
+				<div><span>All-you-can-eat dinner</span></div>
+				<div><span>All-you-can-drink beer</span></div>
+				<div><span>Banquet entertainment</span></div>
+				<div><span>Participation Bag</span></div>
+				<div><span>Salient auction</span></div>
+				<div><span><strong>Guaranteed fun, husky hugs and kisses & tons of good karma credits!</strong></span></div>
+			</li>
+		</ul>
+	</div>
+	<div class="large-1 columns">&nbsp;</div>
+</div>

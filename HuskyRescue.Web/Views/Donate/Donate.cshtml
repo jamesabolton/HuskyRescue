@@ -1,0 +1,234 @@
+﻿@using HuskyRescue.Web.HtmlHelpers;
+@using Recaptcha.Web
+@using Recaptcha.Web.Mvc;
+@model HuskyRescue.ViewModel.Payment.Donation
+@section scripts {
+	<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+	<script src="https://js.braintreegateway.com/v1/braintree-data.js"></script>
+
+	<script type="text/javascript">
+		braintree.setup('@ViewData["clientToken"]',
+			'custom',
+			{
+				container: "checkout",
+				id: "donateForm",
+
+				//paypal: {
+				//	container: 'paypal-button',
+				//	singleUse: true,
+				//	onSuccess: function(nonce, email) {
+				//		$('#PaymentMethod').val('paypal');
+				//		$('#CardNumber').val('').prop('disabled', true);
+				//		$('#CardCvv').val('').prop('disabled', true);
+				//		$('#CardExpireMonth').val('').prop('disabled', true);
+				//		$('#CardExpireYear').val('').prop('disabled', true);
+				//		$('#Email').val(email);
+				//	},
+				//	onCancelled: function() {
+				//		$('#PaymentMethod').val('');
+				//		$('#CardNumber').prop('disabled', false);
+				//		$('#CardCvv').prop('disabled', false);
+				//		$('#CardExpireMonth').prop('disabled', false);
+				//		$('#CardExpireYear').prop('disabled', false);
+				//	}
+				//}
+			});
+		var env = $('#environment').val() == true ? BraintreeData.environments.production : BraintreeData.environments.sandbox;
+
+		BraintreeData.setup($('#merchantId').valueOf(), 'donateForm', env);
+
+		$('#donateButton').on('click', function (e) {
+			//$("#donateForm").validate();
+			e.preventDefault();
+			var isValid = $('#donateForm').valid();
+			if (isValid) {
+				if ($('#PaymentMethod').val() != "paypal") {
+					var client = new braintree.api.Client({ clientToken: '@ViewData["clientToken"]' });
+					client.tokenizeCard({
+						cardholderName: $('#FirstName').val() + " " + $('#LastName').val(),
+						number: $('#CardNumber').val(),
+						expirationMonth: $('#CardExpireMonth').val(),
+						expirationYear: $('#CardExpireYear').val(),
+						cvv: $('#CardCvv').val(),
+						billingAddress: {
+							postalCode: $('#PostalCode').val()
+						}
+					}, function (err, nonce) {
+						if ($.find('#payment_method_nonce').length) {
+							$.find('#payment_method_nonce').val(nonce);
+						} else {
+							$('#donateForm').append('<input type="hidden" id="payment_method_nonce" name="payment_method_nonce" value="' + nonce + '" />');
+						}
+						$('#payment_method_nonce').val(nonce);
+						$('#donateForm').submit();
+					});
+				} else {
+					$('#donateForm').submit();
+				}
+			}
+		});
+
+		$(document).ready(function () {
+			// parse the query string
+			var vars = [], hash;
+			var queryString = document.URL.split('?')[1];
+			if (queryString != undefined) {
+				var queryStringArray = queryString.split('&');
+				for (var i = 0; i < queryStringArray.length; i++) {
+					hash = queryStringArray[i].split('=');
+					vars.push(hash[1]);
+					vars[hash[0]] = hash[1];
+				}
+
+				if (!isNaN(vars['Amount'])) {
+					$('#Amount').val(vars['Amount']);
+				}
+			}
+
+			document.getElementById("FirstName").focus();
+		});
+	</script>
+}
+
+<div class="row">
+	<div class="small-6 small-centered columns">
+		<h3>Donate to TXHR</h3>
+	</div>
+</div>
+
+@using (Html.BeginForm("Donate", "Donate", FormMethod.Post, new { id = "donateForm", autocomplete = "off" }))
+{
+	@Html.AntiForgeryToken()
+	@Html.HiddenFor(m => m.PaymentMethod)
+	<input type="hidden" id="clientToken" value="@ViewData["clientToken"]" />
+	<input type="hidden" id="merchantId" value="@ViewData["merchantId"]" />
+	<input type="hidden" id="environment" value="@ViewData["environment"]" />
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.ValidationSummary(true)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.FirstName)
+			@Html.ValidationMessageFor(m => m.FirstName)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.LastName)
+			@Html.ValidationMessageFor(m => m.LastName)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.StreetAddress1)
+			@Html.ValidationMessageFor(m => m.StreetAddress1)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.StreetAddress2)
+			@Html.ValidationMessageFor(m => m.StreetAddress2)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.City)
+			@Html.ValidationMessageFor(m => m.City)
+		</div>
+		<div class="large-2 columns">
+			@Html.LabelDropDownFor(m => m.StateId, Model.States)
+			@Html.ValidationMessageFor(m => m.StateId)
+		</div>
+		<div class="large-1 columns end">
+			@Html.LabelTextBoxFor(m => m.PostalCode, null, new { placeholder = "12345" })
+			@Html.ValidationMessageFor(m => m.PostalCode)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-2 columns end">
+			@Html.LabelTextBoxFor(m => m.Amount)
+			@Html.ValidationMessageFor(m => m.Amount)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.HomePhoneNumber)
+			@Html.ValidationMessageFor(m => m.HomePhoneNumber)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.MobilePhoneNumber)
+			@Html.ValidationMessageFor(m => m.MobilePhoneNumber)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Email)
+			@Html.ValidationMessageFor(m => m.Email)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Website)
+			@Html.ValidationMessageFor(m => m.Website)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(m => m.CustomerNotes)
+			@Html.ValidationMessageFor(m => m.CustomerNotes)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-1 columns">
+			<p>your card</p>
+		</div>
+		<div class="large-2 columns">
+			@Html.LabelTextBoxFor(m => m.CardNumber, false, null, new { placeholder = "1111222233334444", data_braintree_name = "number", maxlength = "19" })
+			@Html.ValidationMessageFor(m => m.CardNumber)
+		</div>
+		<div class="large-1 columns">
+			@Html.LabelTextBoxFor(m => m.CardCvv, false, null, new { placeholder = "123", data_braintree_name = "cvv", maxlength = "5" })
+			@Html.ValidationMessageFor(m => m.CardCvv)
+		</div>
+		<div class="large-1 columns">
+			@Html.LabelTextBoxFor(m => m.CardExpireMonth, false, null, new { placeholder = "MM", data_braintree_name = "expiration_month", maxlength = "2", min = 1, max = 12 })
+			@Html.ValidationMessageFor(m => m.CardExpireMonth)
+		</div>
+		<div class="large-1 columns end">
+			@Html.LabelTextBoxFor(m => m.CardExpireYear, false, null, new { placeholder = "YYYY", data_braintree_name = "expiration_year", maxlength = "4", min = DateTime.Now.Year })
+			@Html.ValidationMessageFor(m => m.CardExpireYear)
+		</div>
+	</div>
+
+	@*<div class="row">
+		<div class="large-1 columns">
+			<p>or PayPal</p>
+		</div>
+		<div class="large-11 columns">
+			<div id="paypal-button"></div>
+			<br />
+		</div>
+	</div>*@
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelCheckboxFor(m => m.FutureContact)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.Recaptcha(@ViewData["recapPublicKey"].ToString(), RecaptchaTheme.Clean)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<input type="submit" value="Donate Now" class="button" id="donateButton">
+		</div>
+	</div>
+}

@@ -1,0 +1,1090 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0EAD9570-99CB-4DFB-B899-0E15A58FE624}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HuskyRescue.Web</RootNamespace>
+    <AssemblyName>HuskyRescue.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44301</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEBUG_CONFIG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;RELEASE_CONFIG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc.Owin">
+      <HintPath>..\packages\Autofac.Mvc5.Owin.3.1.0\lib\net45\Autofac.Integration.Mvc.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin">
+      <HintPath>..\packages\Autofac.Owin.3.1.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Braintree-2.58.0, Version=2.58.0.0, Culture=neutral, PublicKeyToken=31b586f34d3e96c7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Braintree.2.58.0\lib\Braintree-2.58.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Destructurama.Attributed, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2ad38909bb3e5c02, processorArchitecture=MSIL">
+      <HintPath>..\packages\Destructurama.Attributed.1.0.5\lib\portable-net45+win+wp80\Destructurama.Attributed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExpressiveAnnotations, Version=2.4.1.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.2.7.1\lib\net45\ExpressiveAnnotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExpressiveAnnotations.MvcUnobtrusive, Version=2.4.7.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.2.7.1\lib\net45\ExpressiveAnnotations.MvcUnobtrusive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GoogleRecaptcha, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleRecaptcha.1.1.1\lib\GoogleRecaptcha.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GoogleRecaptchaMvc, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleRecaptchaMvc.1.0.1\lib\GoogleRecaptchaMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin.Security.Providers, Version=1.25.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.1.27\lib\net45\Owin.Security.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.1.5.14\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.1.5.14\lib\net45\Serilog.FullNetFx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Email, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Email.1.5.37\lib\net45\Serilog.Sinks.Email.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.MSSqlServer, Version=3.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.MSSqlServer.3.0.52\lib\net45\Serilog.Sinks.MSSqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SerilogWeb.Classic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9462ddd55fbc0e7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SerilogWeb.Classic.2.0.9\lib\net45\SerilogWeb.Classic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SerilogWeb.Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9462ddd55fbc0e7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SerilogWeb.Owin.1.0.1\lib\net45\SerilogWeb.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.identitymodel.services" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutoFacConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\Bundles\Foundation.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountManagerController.cs" />
+    <Compile Include="Controllers\AdminEventsController.cs" />
+    <Compile Include="Controllers\AdminEventsSponsorsController.cs" />
+    <Compile Include="Controllers\AdminEventsSponsorshipController.cs" />
+    <Compile Include="Controllers\AdminIdentityResourcesController.cs" />
+    <Compile Include="Controllers\AdminIdentityRolesController.cs" />
+    <Compile Include="Controllers\AdminIdentityUsersController.cs" />
+    <Compile Include="Controllers\AdminOrganizationsController.cs" />
+    <Compile Include="Controllers\AdminStoreController.cs" />
+    <Compile Include="Controllers\AdminSystemSettingsController.cs" />
+    <Compile Include="Controllers\AdoptionController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DonateController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FosterController.cs" />
+    <Compile Include="Controllers\GolfController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\RoughRidersController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\VolunteerController.cs" />
+    <Compile Include="Filters\ExportModelStateToTempData.cs" />
+    <Compile Include="Filters\HandleErrorExtendedAttribute.cs" />
+    <Compile Include="Filters\ImportModelStateFromTempData.cs" />
+    <Compile Include="Filters\ModelStateTempDataTransfer.cs" />
+    <Compile Include="Filters\ResourceAuthorizeAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlHelpers\Foundation.cs" />
+    <Compile Include="HtmlHelpers\Common.cs" />
+    <Compile Include="MiscHelpers\LegacyUrlRoute.cs" />
+    <Compile Include="MiscHelpers\RedirectRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BingSiteAuth.xml" />
+    <Content Include="Content\Fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Fonts\Iconomous.dev.svg" />
+    <Content Include="Content\Fonts\Iconomous.svg" />
+    <Content Include="Content\Fonts\slick.svg" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\bg_main.png" />
+    <Content Include="Content\Images\Controllers\Events\RoughRiders\2015 RoughRiders Flyer.jpg" />
+    <Content Include="Content\Images\Controllers\Events\RoughRiders\2015 RoughRiders Flyer_S.jpg" />
+    <Content Include="Content\Images\Controllers\Events\RoughRiders\RoughRiders.png" />
+    <Content Include="Content\Images\Controllers\Golf\91-Design.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\DSC00002.png" />
+    <Content Include="Content\Images\Controllers\Golf\DSC00002a.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\DSC09964a.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\logo-2016-s.png" />
+    <Content Include="Content\Images\Controllers\Golf\Golf2015.png" />
+    <Content Include="Content\Images\Controllers\Golf\Golf2012-1.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\Golf2014.png" />
+    <Content Include="Content\Images\Controllers\Golf\GolfLogo.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\Hollywood-Feed.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\Nadia_golf_t.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\OCS-Logo-FinalblueS1.jpg" />
+    <Content Include="Content\Images\Controllers\Golf\RVI2.png" />
+    <Content Include="Content\Images\Controllers\Golf\GolfBanner2015.png" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider10.png" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider1a.png" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider2a.png" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider3a.png" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider4a.png" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider5.png" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider6.jpg" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider7.jpg" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider750.jpg" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider8.jpg" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider800.jpg" />
+    <Content Include="Content\Images\Controllers\Home\Index\slider9.jpg" />
+    <Content Include="Content\Images\footer-logo.png" />
+    <Content Include="Content\Images\Huskies\AdoptionEvent_01.jpg" />
+    <Content Include="Content\Images\Huskies\AdoptionEvent_03.jpg" />
+    <Content Include="Content\Images\Huskies\AdoptionEvent_04.jpg" />
+    <Content Include="Content\Images\Huskies\col.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_01.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_02.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_03.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_07.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_10.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_13.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_14.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_20.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_27.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_30.jpg" />
+    <Content Include="Content\Images\Huskies\FaceShot_36.jpg" />
+    <Content Include="Content\Images\Huskies\HuskyPlay_03.jpg" />
+    <Content Include="Content\Images\Huskies\Ichabod.png" />
+    <Content Include="Content\Images\Huskies\isis.jpg" />
+    <Content Include="Content\Images\Huskies\lollipop.jpg" />
+    <Content Include="Content\Images\Huskies\Pose_09.jpg" />
+    <Content Include="Content\Images\Huskies\Pose_12.jpg" />
+    <Content Include="Content\Images\Huskies\Pose_13.jpg" />
+    <Content Include="Content\Images\Huskies\Puppy_03.jpg" />
+    <Content Include="Content\Images\Huskies\Puppy_05.jpg" />
+    <Content Include="Content\Images\Huskies\rush.jpg" />
+    <Content Include="Content\Images\Huskies\Shirts_01.jpg" />
+    <Content Include="Content\Images\Huskies\Transport_01.jpg" />
+    <Content Include="Content\Images\Huskies\Volunteer_01.jpg" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\Sponsors\40Crk_Distillery_4R.jpg" />
+    <Content Include="Content\Images\Sponsors\91.jpg" />
+    <Content Include="Content\Images\Sponsors\aflac_logo.jpg" />
+    <Content Include="Content\Images\Sponsors\aggieland.png" />
+    <Content Include="Content\Images\Sponsors\alphalock.jpg" />
+    <Content Include="Content\Images\Sponsors\amazonsmile.png" />
+    <Content Include="Content\Images\Sponsors\astonmartin.png" />
+    <Content Include="Content\Images\Sponsors\Aston_Logo_Twitter.jpg" />
+    <Content Include="Content\Images\Sponsors\braintree.svg" />
+    <Content Include="Content\Images\Sponsors\Brinkmann.jpg" />
+    <Content Include="Content\Images\Sponsors\callaghan.png" />
+    <Content Include="Content\Images\Sponsors\Carpenter Pet Bedding.png" />
+    <Content Include="Content\Images\Sponsors\chewey.jpg" />
+    <Content Include="Content\Images\Sponsors\chewey.png" />
+    <Content Include="Content\Images\Sponsors\creekside.png" />
+    <Content Include="Content\Images\Sponsors\crossroads.jpg" />
+    <Content Include="Content\Images\Sponsors\cupcates.jpg" />
+    <Content Include="Content\Images\Sponsors\DirtyDawgz.png" />
+    <Content Include="Content\Images\Sponsors\DMC_Logo.jpg" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC00002.JPG" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC00002.png" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC00002a.jpg" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC00015.JPG" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC09936.JPG" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC09960.JPG" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC09964.JPG" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC09964.png" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC09964a.jpg" />
+    <Content Include="Content\Images\Controllers\Events\Golf\DSC09978.JPG" />
+    <Content Include="Content\Images\Sponsors\dovecreek.jpg" />
+    <Content Include="Content\Images\Sponsors\DW.png" />
+    <Content Include="Content\Images\Sponsors\Freedom-Powersports.jpg" />
+    <Content Include="Content\Images\Sponsors\fuzzys.jpg" />
+    <Content Include="Content\Images\Controllers\Events\Golf\Golf2012-1.jpg" />
+    <Content Include="Content\Images\Controllers\Events\Golf\Golf2014.png" />
+    <Content Include="Content\Images\Controllers\Events\Golf\GolfLogo.jpg" />
+    <Content Include="Content\Images\Sponsors\Google-Nonprofits.png" />
+    <Content Include="Content\Images\Sponsors\Google-Nonprofits2.png" />
+    <Content Include="Content\Images\Sponsors\heartoftexas.png" />
+    <Content Include="Content\Images\Sponsors\Jetbrains.svg" />
+    <Content Include="Content\Images\Sponsors\LOGO-Brinkmann-red.jpg" />
+    <Content Include="Content\Images\Sponsors\logo-rally-to-rescue.png" />
+    <Content Include="Content\Images\Sponsors\lp.jpg" />
+    <Content Include="Content\Images\Controllers\Events\Golf\Nadia_golf.JPG" />
+    <Content Include="Content\Images\Controllers\Events\Golf\Nadia_golf_t.jpg" />
+    <Content Include="Content\Images\Sponsors\madmimi.png" />
+    <Content Include="Content\Images\Sponsors\paypal-logo.png" />
+    <Content Include="Content\Images\Sponsors\paypal.jpg" />
+    <Content Include="Content\Images\Sponsors\paypalgivingfund.gif" />
+    <Content Include="Content\Images\Sponsors\petco.png" />
+    <Content Include="Content\Images\Sponsors\petfoster.jpg" />
+    <Content Include="Content\Images\Sponsors\pet_finder_logo.png" />
+    <Content Include="Content\Images\Sponsors\postmarkapp.png" />
+    <Content Include="Content\Images\Sponsors\rallytorescue.jpg" />
+    <Content Include="Content\Images\Sponsors\rescuegroups.jpg" />
+    <Content Include="Content\Images\Sponsors\RVI2.png" />
+    <Content Include="Content\Images\Sponsors\SecuritySolutions.jpg" />
+    <Content Include="Content\Images\Sponsors\ShellySessum.jpg" />
+    <Content Include="Content\Images\Sponsors\squareup.png" />
+    <Content Include="Content\Images\Sponsors\SSDFW.jpg" />
+    <Content Include="Content\Images\Sponsors\teasley.jpg" />
+    <Content Include="Content\Images\Sponsors\techsoup.png" />
+    <Content Include="Content\Images\Sponsors\temp.gif" />
+    <Content Include="Content\Images\Sponsors\temp.png" />
+    <Content Include="Content\Images\Sponsors\twilio.png" />
+    <Content Include="Content\Images\Sponsors\twilio.svg" />
+    <Content Include="Content\Images\Sponsors\Wagtime.jpg" />
+    <Content Include="Content\Images\Sponsors\zap5.png" />
+    <Content Include="Content\Images\Sports-Golf-icon.png" />
+    <Content Include="Content\Images\Store\DSC01754.JPG" />
+    <Content Include="Content\Images\Store\DSC01758.JPG" />
+    <Content Include="Content\Images\Store\DSC01766.JPG" />
+    <Content Include="Content\Images\Store\DSC01771.JPG" />
+    <Content Include="Content\Images\Store\Grey Sweatshirt.jpg" />
+    <Content Include="Content\Images\Store\Kids Tee Pic.jpg" />
+    <Content Include="Content\Images\Store\Longsleeve.jpg" />
+    <Content Include="Content\Images\Store\Magnet.jpg" />
+    <Content Include="Content\Images\Store\shirt-back.JPG" />
+    <Content Include="Content\Images\Store\shirt-front.JPG" />
+    <Content Include="Content\Images\Store\shirt2.jpg" />
+    <Content Include="Content\Images\Store\shirt3.jpg" />
+    <Content Include="Content\Images\Store\sticker.jpg" />
+    <Content Include="Content\Images\Store\Sweatshirt.jpg" />
+    <Content Include="Content\Images\Store\White Hoodie.jpg" />
+    <Content Include="Content\Images\Store\White Shirt.jpg" />
+    <Content Include="Content\Images\Store\white.jpg" />
+    <Content Include="Content\Images\texture1.jpg" />
+    <Content Include="Content\Scripts\Controller\AdminEventsSponsors-Create.js" />
+    <Content Include="Content\Scripts\Controller\AdminEventsSponsors-Create.min.js">
+      <DependentUpon>AdminEventsSponsors-Create.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Adoption-Apply.js" />
+    <Content Include="Content\Scripts\Controller\Adoption-Apply.min.js">
+      <DependentUpon>Adoption-Apply.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Adoption-Index.js" />
+    <Content Include="Content\Scripts\Controller\Adoption-Index.min.js">
+      <DependentUpon>Adoption-Index.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Donate-Index.js" />
+    <Content Include="Content\Scripts\Controller\Donate-Index.min.js">
+      <DependentUpon>Donate-Index.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Golf-Register.js" />
+    <Content Include="Content\Scripts\Controller\Golf-Register.min.js">
+      <DependentUpon>Golf-Register.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Home-Index.js" />
+    <Content Include="Content\Scripts\Controller\Home-Index.min.js">
+      <DependentUpon>Home-Index.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\RoughRiders-Register.js" />
+    <Content Include="Content\Scripts\Controller\RoughRiders-Register.min.js">
+      <DependentUpon>RoughRiders-Register.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\dropzone\dropzone.min.js">
+      <DependentUpon>dropzone.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation-datepicker.js" />
+    <Content Include="Content\Scripts\foundation\foundation-datepicker.min.js">
+      <DependentUpon>foundation-datepicker.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\placeholder.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.blockUI.min.js">
+      <DependentUpon>jquery.blockUI.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.countdown.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.countdown.min.js">
+      <DependentUpon>jquery.countdown.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.datetimepicker.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.datetimepicker.min.js">
+      <DependentUpon>jquery.datetimepicker.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.easing.1.3.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.easing.1.3.min.js">
+      <DependentUpon>jquery.easing.1.3.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.mask.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.mask.min.js">
+      <DependentUpon>jquery.mask.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.plugin.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.plugin.min.js">
+      <DependentUpon>jquery.plugin.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.validate.extramethods.js" />
+    <Content Include="Content\Scripts\jQuery\jquery-1.11.1.js" />
+    <Content Include="Content\Scripts\jQuery\jquery-1.11.1.min.js">
+      <DependentUpon>jquery-1.11.1.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery-migrate-1.2.1.js" />
+    <Content Include="Content\Scripts\jQuery\jquery-migrate-1.2.1.min.js">
+      <DependentUpon>jquery-migrate-1.2.1.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.validate.extramethods.min.js">
+      <DependentUpon>jquery.validate.extramethods.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.validate.min.js">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.validate.txhr.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.validate.txhr.min.js">
+      <DependentUpon>jquery.validate.txhr.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\php-date-formatter.js" />
+    <Content Include="Content\Scripts\jQuery\php-date-formatter.min.js">
+      <DependentUpon>php-date-formatter.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\braintree.js" />
+    <Content Include="Content\Scripts\Misc\camera.js" />
+    <Content Include="Content\Scripts\Misc\camera.min.js">
+      <DependentUpon>camera.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\expressive.annotations.validate.min.js">
+      <DependentUpon>expressive.annotations.validate.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\expressive.annotations.validate.txhr.js" />
+    <Content Include="Content\Scripts\Misc\expressive.annotations.validate.txhr.min.js">
+      <DependentUpon>expressive.annotations.validate.txhr.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\slick.js" />
+    <Content Include="Content\Scripts\Misc\slick.min.js">
+      <DependentUpon>slick.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\camera\camera.css" />
+    <Content Include="Content\Styles\camera\images\blank.gif" />
+    <Content Include="Content\Styles\camera\images\camera-loader.gif" />
+    <Content Include="Content\Styles\camera\camera.min.css">
+      <DependentUpon>camera.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\camera\images\camera_skins.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay1.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay10.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay2.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay3.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay4.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay5.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay6.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay7.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay8.png" />
+    <Content Include="Content\Styles\camera\images\patterns\overlay9.png" />
+    <Content Include="Content\Styles\camera\images\patterns\_notes\dwsync.xml" />
+    <Content Include="Content\Styles\camera\images\slides\big_bunny_fake.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\bridge.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\leaf.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\road.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\sea.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\shelter.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\big_bunny_fake.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\bridge.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\header_bg.png" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\leaf.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\road.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\sea.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\shelter.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\tree.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\thumbs\_notes\dwsync.xml" />
+    <Content Include="Content\Styles\camera\images\slides\tree.jpg" />
+    <Content Include="Content\Styles\camera\images\slides\_notes\dwsync.xml" />
+    <Content Include="Content\Styles\dropzone\basic.min.css">
+      <DependentUpon>basic.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\dropzone\dropzone.min.css">
+      <DependentUpon>dropzone.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\font-awesome.css" />
+    <Content Include="Content\Styles\font-awesome.min.css">
+      <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\foundation\app.css" />
+    <Content Include="Content\Styles\foundation\app.min.css">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\foundation\foundation-datepicker.css" />
+    <Content Include="Content\Styles\foundation\foundation-datepicker.min.css">
+      <DependentUpon>foundation-datepicker.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\foundation\foundation.css" />
+    <Content Include="Content\Styles\foundation\foundation.min.css">
+      <DependentUpon>foundation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\foundation\foundation.mvc.css" />
+    <Content Include="Content\Styles\foundation\normalize.css" />
+    <Content Include="Content\Styles\foundation\normalize.min.css">
+      <DependentUpon>normalize.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.abide.min.js">
+      <DependentUpon>foundation.abide.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.accordion.min.js">
+      <DependentUpon>foundation.accordion.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.alert.min.js">
+      <DependentUpon>foundation.alert.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.clearing.min.js">
+      <DependentUpon>foundation.clearing.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.dropdown.min.js">
+      <DependentUpon>foundation.dropdown.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.equalizer.min.js">
+      <DependentUpon>foundation.equalizer.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.interchange.min.js">
+      <DependentUpon>foundation.interchange.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.joyride.min.js">
+      <DependentUpon>foundation.joyride.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.magellan.min.js">
+      <DependentUpon>foundation.magellan.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.min.js">
+      <DependentUpon>foundation.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.offcanvas.min.js">
+      <DependentUpon>foundation.offcanvas.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.orbit.min.js">
+      <DependentUpon>foundation.orbit.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.reveal.min.js">
+      <DependentUpon>foundation.reveal.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.slider.min.js">
+      <DependentUpon>foundation.slider.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.tab.min.js">
+      <DependentUpon>foundation.tab.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.tooltip.min.js">
+      <DependentUpon>foundation.tooltip.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.topbar.min.js">
+      <DependentUpon>foundation.topbar.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.cookie.min.js">
+      <DependentUpon>jquery.cookie.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\iconomous.css" />
+    <Content Include="Content\Styles\iconomous.min.css">
+      <DependentUpon>iconomous.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\jquery.countdown.css" />
+    <Content Include="Content\Styles\jquery.countdown.min.css">
+      <DependentUpon>jquery.countdown.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\jquery.datetimepicker.css" />
+    <Content Include="Content\Styles\jquery.datetimepicker.min.css">
+      <DependentUpon>jquery.datetimepicker.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\slick.css" />
+    <Content Include="Content\Styles\slick.min.css">
+      <DependentUpon>slick.css</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Styles\Site.css" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Scripts\foundation\foundation.abide.min.js.map">
+      <DependentUpon>foundation.abide.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.accordion.min.js.map">
+      <DependentUpon>foundation.accordion.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.alert.min.js.map">
+      <DependentUpon>foundation.alert.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.clearing.min.js.map">
+      <DependentUpon>foundation.clearing.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.dropdown.min.js.map">
+      <DependentUpon>foundation.dropdown.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.equalizer.min.js.map">
+      <DependentUpon>foundation.equalizer.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.interchange.min.js.map">
+      <DependentUpon>foundation.interchange.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.joyride.min.js.map">
+      <DependentUpon>foundation.joyride.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.min.js.map">
+      <DependentUpon>foundation.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.magellan.min.js.map">
+      <DependentUpon>foundation.magellan.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.offcanvas.min.js.map">
+      <DependentUpon>foundation.offcanvas.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.orbit.min.js.map">
+      <DependentUpon>foundation.orbit.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.reveal.min.js.map">
+      <DependentUpon>foundation.reveal.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.slider.min.js.map">
+      <DependentUpon>foundation.slider.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.tab.min.js.map">
+      <DependentUpon>foundation.tab.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.tooltip.min.js.map">
+      <DependentUpon>foundation.tooltip.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\foundation\foundation.topbar.min.js.map">
+      <DependentUpon>foundation.topbar.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.cookie.min.js.map">
+      <DependentUpon>jquery.cookie.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.unobtrusive-ajax.min.js.map">
+      <DependentUpon>jquery.unobtrusive-ajax.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery-1.11.1.min.js.map">
+      <DependentUpon>jquery-1.11.1.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery-migrate-1.2.1.min.js.map">
+      <DependentUpon>jquery-migrate-1.2.1.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Fonts\Iconomous.eot" />
+    <Content Include="Content\Fonts\Iconomous.ttf" />
+    <Content Include="Content\Fonts\Iconomous.woff" />
+    <Content Include="Content\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Fonts\FontAwesome.otf" />
+    <Content Include="Content\Scripts\jQuery\jquery.plugin.min.js.map">
+      <DependentUpon>jquery.plugin.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.countdown.min.js.map">
+      <DependentUpon>jquery.countdown.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.unobtrusive-ajax.min.js">
+      <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.validate.unobtrusive.min.js">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\modernizr-2.8.3.js" />
+    <Content Include="Content\Scripts\Misc\modernizr-2.8.3.min.js">
+      <DependentUpon>modernizr-2.8.3.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\respond.js" />
+    <Content Include="Content\Scripts\Misc\respond.matchmedia.addListener.js" />
+    <Content Include="Content\Scripts\Misc\respond.matchmedia.addListener.min.js">
+      <DependentUpon>respond.matchmedia.addListener.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\respond.min.js">
+      <DependentUpon>respond.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\_references.js" />
+    <Content Include="Content\Scripts\foundation\fastclick.js" />
+    <Content Include="Content\Scripts\foundation\foundation.abide.js" />
+    <Content Include="Content\Scripts\foundation\foundation.accordion.js" />
+    <Content Include="Content\Scripts\foundation\foundation.alert.js" />
+    <Content Include="Content\Scripts\foundation\foundation.clearing.js" />
+    <Content Include="Content\Scripts\foundation\foundation.dropdown.js" />
+    <Content Include="Content\Scripts\foundation\foundation.equalizer.js" />
+    <Content Include="Content\Scripts\foundation\foundation.interchange.js" />
+    <Content Include="Content\Scripts\foundation\foundation.joyride.js" />
+    <Content Include="Content\Scripts\foundation\foundation.js" />
+    <Content Include="Content\Scripts\foundation\foundation.magellan.js" />
+    <Content Include="Content\Scripts\foundation\foundation.offcanvas.js" />
+    <Content Include="Content\Scripts\foundation\foundation.orbit.js" />
+    <Content Include="Content\Scripts\foundation\foundation.reveal.js" />
+    <Content Include="Content\Scripts\foundation\foundation.slider.js" />
+    <Content Include="Content\Scripts\foundation\foundation.tab.js" />
+    <Content Include="Content\Scripts\foundation\foundation.tooltip.js" />
+    <Content Include="Content\Scripts\foundation\foundation.topbar.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.cookie.js" />
+    <Content Include="Content\Fonts\slick.eot" />
+    <Content Include="Content\Fonts\slick.ttf" />
+    <Content Include="Content\Fonts\slick.woff" />
+    <Content Include="Content\Scripts\foundation\foundation-datepicker.min.js.map">
+      <DependentUpon>foundation-datepicker.min.js</DependentUpon>
+    </Content>
+    <Content Include="Forms\addoptionapplication.pdf" />
+    <Content Include="Forms\adoption-contract.pdf" />
+    <Content Include="Forms\foster-contract.pdf" />
+    <Content Include="Forms\fosterapplication.pdf" />
+    <Content Include="Forms\volunteer-profile.pdf" />
+    <Content Include="Content\Scripts\dropzone\dropzone.min.js.map">
+      <DependentUpon>dropzone.min.js</DependentUpon>
+    </Content>
+    <Content Include="missy.html" />
+    <Content Include="puppycam.html" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.blockUI.js" />
+    <Content Include="yandex_5f8ed4f139de06e7.html" />
+    <Content Include="Content\Scripts\Controller\Adoption-Index.min.js.map">
+      <DependentUpon>Adoption-Index.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Golf-Register.min.js.map">
+      <DependentUpon>Golf-Register.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Home-Index.min.js.map">
+      <DependentUpon>Home-Index.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.datetimepicker.min.js.map">
+      <DependentUpon>jquery.datetimepicker.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.easing.1.3.min.js.map">
+      <DependentUpon>jquery.easing.1.3.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\RoughRiders-Register.min.js.map">
+      <DependentUpon>RoughRiders-Register.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Donate-Index.min.js.map">
+      <DependentUpon>Donate-Index.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\AdminEventsSponsors-Create.min.js.map">
+      <DependentUpon>AdminEventsSponsors-Create.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.mask.min.js.map">
+      <DependentUpon>jquery.mask.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Controller\Adoption-Apply.min.js.map">
+      <DependentUpon>Adoption-Apply.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.blockUI.min.js.map">
+      <DependentUpon>jquery.blockUI.min.js</DependentUpon>
+    </Content>
+    <None Include="Content\Scripts\jQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.validate.js" />
+    <Content Include="Content\Scripts\jQuery\jquery.validate.txhr.min.js.map">
+      <DependentUpon>jquery.validate.txhr.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\dropzone\basic.css" />
+    <Content Include="Content\Styles\dropzone\dropzone.css" />
+    <Content Include="Content\Scripts\dropzone\dropzone.js" />
+    <Content Include="Content\Styles\dropzone\spritemap%402x.png" />
+    <Content Include="Content\Styles\dropzone\spritemap.png" />
+    <Content Include="Content\Scripts\Misc\expressive.annotations.validate.js" />
+    <Content Include="google116457a439fa6937.html" />
+    <Content Include="robots.txt" />
+    <Content Include="sig.jpg" />
+    <Content Include="sitemap.xml" />
+    <Content Include="THR-favicon.ico" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\AccountManager\AddPhoneNumber.cshtml" />
+    <Content Include="Views\AccountManager\ChangePassword.cshtml" />
+    <Content Include="Views\AccountManager\Index.cshtml" />
+    <Content Include="Views\AccountManager\ManageLogins.cshtml" />
+    <Content Include="Views\AccountManager\SetPassword.cshtml" />
+    <Content Include="Views\AccountManager\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Content\Scripts\jQuery\jquery.validate.unobtrusive.min.js.map">
+      <DependentUpon>jquery.validate.unobtrusive.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\respond.min.js.map">
+      <DependentUpon>respond.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\respond.matchmedia.addListener.min.js.map">
+      <DependentUpon>respond.matchmedia.addListener.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\modernizr-2.8.3.min.js.map">
+      <DependentUpon>modernizr-2.8.3.min.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\Shared\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\AccessDeniedPartial.cshtml" />
+    <Content Include="Views\AdminIdentityResources\Index.cshtml" />
+    <Content Include="Views\AdminIdentityResources\Details.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\AdminIdentityResources\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\FailHusky.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Volunteer\Index.cshtml" />
+    <Content Include="Views\Volunteer\Apply.cshtml" />
+    <Content Include="Views\Home\Sponsors.cshtml" />
+    <Content Include="Views\Home\Partners.cshtml" />
+    <Content Include="Views\Home\BoardOfDirectors.cshtml" />
+    <Content Include="Views\Home\Reports.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
+    <Content Include="Views\Home\Mission.cshtml" />
+    <Content Include="Views\Home\HuskyRehab.cshtml" />
+    <Content Include="Views\Home\Advocacy.cshtml" />
+    <Content Include="Views\Home\Volunteer.cshtml" />
+    <Content Include="Views\Home\Foster.cshtml" />
+    <Content Include="Views\Home\Sponsor.cshtml" />
+    <Content Include="Views\Foster\Apply.cshtml" />
+    <Content Include="Views\Foster\Index.cshtml" />
+    <Content Include="Views\Donate\Index.cshtml" />
+    <Content Include="Views\Donate\Monthly.cshtml" />
+    <Content Include="Views\Donate\Sponsor.cshtml" />
+    <Content Include="Views\Donate\Now.cshtml" />
+    <Content Include="Views\Donate\Supplies.cshtml" />
+    <Content Include="Views\Donate\Donate.cshtml" />
+    <Content Include="Views\Adoption\Index.cshtml" />
+    <Content Include="Views\Adoption\Apply.cshtml" />
+    <Content Include="Views\AdminSystemSettings\Index.cshtml" />
+    <Content Include="Views\AdminSystemSettings\Details.cshtml" />
+    <Content Include="Views\AdminSystemSettings\Create.cshtml" />
+    <Content Include="Views\AdminSystemSettings\Edit.cshtml" />
+    <Content Include="Views\AdminIdentityRoles\Index.cshtml" />
+    <Content Include="Views\AdminIdentityRoles\Details.cshtml" />
+    <Content Include="Views\AdminIdentityRoles\Create.cshtml" />
+    <Content Include="Views\AdminIdentityRoles\Edit.cshtml" />
+    <Content Include="Views\AdminIdentityUsers\Create.cshtml" />
+    <Content Include="Views\AdminIdentityUsers\Details.cshtml" />
+    <Content Include="Views\AdminIdentityUsers\Edit.cshtml" />
+    <Content Include="Views\AdminIdentityUsers\Index.cshtml" />
+    <Content Include="Views\Shared\_StoreCartInfo.cshtml" />
+    <Content Include="Views\Adoption\ThankYou.cshtml" />
+    <Content Include="Views\Adoption\Process.cshtml" />
+    <Content Include="Views\Donate\ThankYou.cshtml" />
+    <Content Include="Views\Home\ThankYou.cshtml" />
+    <Content Include="Views\Home\Policies.cshtml" />
+    <Content Include="Views\Adoption\_RescueGroupAnimal.cshtml" />
+    <Content Include="Content\Scripts\Misc\expressive.annotations.validate.min.js.map">
+      <DependentUpon>expressive.annotations.validate.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\php-date-formatter.min.js.map">
+      <DependentUpon>php-date-formatter.min.js</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\prod.txhr.pubxml" />
+    <None Include="Properties\PublishProfiles\test.txhr.pubxml" />
+    <Content Include="Views\Golf\Index.cshtml" />
+    <Content Include="Views\Golf\Register.cshtml" />
+    <Content Include="Views\Golf\RegisterThankyou.cshtml" />
+    <Content Include="Views\Golf\Sponsorships.cshtml" />
+    <Content Include="Views\Golf\Sponsors.cshtml" />
+    <Content Include="Views\Golf\Sponsor.cshtml" />
+    <Content Include="Views\Golf\SponsorThankYou.cshtml" />
+    <Content Include="Views\Golf\RaffleAuction.cshtml" />
+    <Content Include="Views\Golf\Support.cshtml" />
+    <Content Include="Views\Golf\_Menu.cshtml" />
+    <Content Include="Views\AdminEvents\Index.cshtml" />
+    <Content Include="Views\AdminEvents\Create.cshtml" />
+    <Content Include="Views\AdminOrganizations\Index.cshtml" />
+    <Content Include="Views\AdminOrganizations\Create.cshtml" />
+    <Content Include="Views\RoughRiders\Index.cshtml" />
+    <Content Include="Views\RoughRiders\Thankyou.cshtml" />
+    <Content Include="Views\AdminEventsSponsorship\Index.cshtml" />
+    <Content Include="Views\AdminEventsSponsorship\Create.cshtml" />
+    <Content Include="Views\AdminEventsSponsorship\Edit.cshtml" />
+    <Content Include="Views\AdminEventsSponsors\Index.cshtml" />
+    <Content Include="Views\AdminEventsSponsors\Create.cshtml" />
+    <Content Include="Views\Home\Stream.cshtml" />
+    <Content Include="Views\AdminEvents\Edit.cshtml" />
+    <None Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Applications\" />
+    <Folder Include="App_Data\Logs\" />
+    <Folder Include="Views\AdminStore\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Views\Inventory\" />
+    <Folder Include="Views\Store\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Content\Scripts\jQuery\jquery.validate.extramethods.min.js.map">
+      <DependentUpon>jquery.validate.extramethods.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\jQuery\jquery.validate.min.js.map">
+      <DependentUpon>jquery.validate.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\slick.min.js.map">
+      <DependentUpon>slick.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\expressive.annotations.validate.txhr.min.js.map">
+      <DependentUpon>expressive.annotations.validate.txhr.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Misc\camera.min.js.map">
+      <DependentUpon>camera.min.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HuskyRescue.BusinessLogic\HuskyRescue.BusinessLogic.csproj">
+      <Project>{e5f76f64-be27-47ee-bc0e-314b7069ca24}</Project>
+      <Name>HuskyRescue.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HuskyRescue.ViewModel\HuskyRescue.ViewModel.csproj">
+      <Project>{bde8197a-5524-4485-8408-f27143244070}</Project>
+      <Name>HuskyRescue.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TEST_CONFIG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52957</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44301/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

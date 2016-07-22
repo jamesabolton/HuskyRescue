@@ -1,0 +1,12 @@
+﻿@Html.Partial("_Menu")
+@section scripts {
+	<script type="text/javascript">
+		$(document).ready(function ($) {
+			// Get current url
+			// Select an a element that has the matching href and apply a class of 'active'. Also prepend a - to the content of the link
+			var url = window.location.pathname;
+			$('.golf-nav dd a[href="' + url + '"]').parent().addClass('active');
+		});
+	</script>
+}
+

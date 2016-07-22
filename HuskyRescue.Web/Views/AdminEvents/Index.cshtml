@@ -1,0 +1,148 @@
+﻿@model IEnumerable<HuskyRescue.ViewModel.Events.List>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.OrganziationName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.EventDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsActive)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsDeleted)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.AddedByUserId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.EventName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.StartTime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.EndTime)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsAllDayEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsRoughRidersEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsGolfTournamentEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsRaffleEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsMeetAndGreetEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsDogWashEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Is5KEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsOtherEvent)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.AreTicketsSold)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TicketPrice)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TickPriceOther)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.OrganziationName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.EventDate)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsActive)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsDeleted)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.AddedByUserId)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.EventName)
+			</td>
+			<td>
+				@if (item.StartTime.HasValue)
+				{
+					Html.DisplayFor(modelItem => item.StartTime.Value);
+				}
+			</td>
+			<td>
+				@if (item.EndTime.HasValue)
+				{
+					Html.DisplayFor(modelItem => item.EndTime.Value);
+				}
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsAllDayEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsRoughRidersEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsGolfTournamentEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsRaffleEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsMeetAndGreetEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsDogWashEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Is5KEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsOtherEvent)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.AreTicketsSold)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.TicketPrice)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.TickPriceOther)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) @*|
+					@Html.ActionLink("Details", "Details", new { id=item.Id }) |
+					@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+			</td>
+		</tr>
+	}
+
+</table>

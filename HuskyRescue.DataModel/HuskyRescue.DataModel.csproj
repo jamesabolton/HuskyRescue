@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HuskyRescue.DataModel</RootNamespace>
+    <AssemblyName>HuskyRescue.DataModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\texashuskyrescue\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddressState.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddressType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Animal.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalBreed.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalColor.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalIntakeType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalPlacement.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalPlacementType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalSize.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Applicant.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantOwnedAnimal.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantResidenceOwnershipType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantResidencePetDepositCoverageType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantResidenceType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantStudentType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantVeterinarian.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetResource.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRoleResource.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAddress.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAddressType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventDonation.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventRegistration.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventRegistrationPerson.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventSponsor.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventSponsorship.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventSponsorshipItem.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventSponsorshipLevel.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="File.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FileType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HuskyRescueModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HuskyRescueModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HuskyRescueModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HuskyRescueModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HuskyRescueModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryCategory.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryImage.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPlacement.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MarketingPreference.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MicrochipManufacturer.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Organization.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationContact.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDonation.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentEventRegistration.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentStore.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneNumber.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneNumberType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoreCart.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StoreCartItem.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StoreOrder.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StoreOrderDetail.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StoreShippingMethod.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAuditLog.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAuditLogEntityType.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemErrorLog.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Website.cs">
+      <DependentUpon>HuskyRescueModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="HuskyRescueModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HuskyRescueModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HuskyRescueModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HuskyRescueModel.edmx</DependentUpon>
+      <LastGenOutput>HuskyRescueModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="HuskyRescueModel.edmx.diagram">
+      <DependentUpon>HuskyRescueModel.edmx</DependentUpon>
+    </None>
+    <None Include="HuskyRescueModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HuskyRescueModel.edmx</DependentUpon>
+      <LastGenOutput>HuskyRescueModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,261 @@
+﻿@using HuskyRescue.Web.HtmlHelpers
+@model HuskyRescue.ViewModel.EventsSponsor.Create
+
+@section scripts
+{
+	@Scripts.Render("~/bundles/AdminEventsSponsors-Create")
+}
+
+@section head {
+}
+
+<div class="row">
+	<div class="large-12 columns">
+		@using (Html.BeginForm("Create", "AdminEventsSponsors", FormMethod.Post, new { id = "adminEventsSponsorsForm", enctype = "multipart/form-data" }))
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+
+			<div class="row">
+				<div class="large-6 small-12 small-centered large-centered columns"><h2>Add New Sponsor</h2></div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelDropDownFor(m => m.EventId, Model.Events)
+					@Html.ValidationMessageFor(m => m.EventId)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelDropDownFor(m => m.EventSponsorshipId, Model.EventSponsorships)
+					@Html.ValidationMessageFor(m => m.EventSponsorshipId)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns">
+					<div class="row">
+						<div class="large-4 columns">
+							@Html.LabelCheckboxFor(m => m.HasPaid)
+						</div>
+						<div class="large-4 columns end">
+							@Html.LabelTextBoxFor(m => m.AmountPaid)
+							@Html.ValidationMessageFor(m => m.AmountPaid)
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-4 columns">
+							@Html.LabelCheckboxFor(m => m.HaveReceivedLogo)
+						</div>
+						<div class="large-4 columns end">
+							@Html.LabelCheckboxFor(m => m.HaveReceivedSingage)
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="large-6 medium-12 small-12 end columns">
+							@Html.TextBoxFor(m => m.FileLogoName, new { type = "file" })
+							@Html.ValidationMessageFor(m => m.FileLogoName)
+						</div>
+					</div>
+				</div>
+				<div class="large-6 columns">
+					@Html.LabelTextAreaFor(m => m.InternalNotes)
+					@Html.ValidationMessageFor(m => m.InternalNotes)
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelRadioButtonFor(m => m.SponsorType, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Person", "P"), new KeyValuePair<string, object>("Business", "B") })
+					@Html.ValidationMessageFor(m => m.SponsorType)
+					@Html.HiddenFor(m => m.IsBusinessSponsor)
+					@Html.HiddenFor(m => m.IsPersonSponsor)
+				</div>
+			</div>
+			<div id="businessFields">
+				<div class="row">
+					<div class="large-12 columns">
+						@Html.LabelRadioButtonFor(m => m.IsNewOrg, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("New", "true"), new KeyValuePair<string, object>("Existing", "false") })
+					</div>
+				</div>
+				<div id="RowOrgExisting">
+					<div class="row">
+						<div class="large-12 columns">
+							@Html.LabelDropDownFor(m => m.OrganizationId, Model.Organizations)
+							@Html.ValidationMessageFor(m => m.OrganizationId)
+						</div>
+					</div>
+				</div>
+				<div id="RowOrgNew">
+					<div class="row">
+						<div class="large-12 columns">
+							<h4>New Business Information</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
+							@Html.LabelTextBoxFor(m => m.OrgName)
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="personFields">
+				<div class="row">
+					<div class="large-12 columns">
+						@Html.LabelRadioButtonFor(m => m.IsNewPerson, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("New", "true"), new KeyValuePair<string, object>("Existing", "false") })
+					</div>
+				</div>
+				<div id="RowPersonExisting">
+					<div class="row">
+						<div class="large-12 columns">
+							@Html.LabelDropDownFor(m => m.PeopleId, Model.People)
+							@Html.ValidationMessageFor(m => m.PeopleId)
+						</div>
+					</div>
+				</div>
+				<div id="RowPersonNew">
+					<div class="row">
+						<div class="large-12 columns">
+							<h4>New Person Information</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-6 columns">
+							@Html.LabelTextBoxFor(m => m.FirstName)
+						</div>
+						<div class="large-6 columns">
+							@Html.LabelTextBoxFor(m => m.LastName)
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="RowNewEntity">
+				<div class="row">
+					<div class="large-12 columns">
+						<h5>Contact Information</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-1 columns">
+						@Html.LabelDropDownFor(m => m.PhoneNumber1TypeId, Model.PhoneNumberTypes)
+						@Html.ValidationMessageFor(m => m.PhoneNumber1TypeId)
+					</div>
+					<div class="large-2 columns">
+						@Html.LabelTextBoxFor(m => m.PhoneNumber1)
+						@Html.ValidationMessageFor(m => m.PhoneNumber1)
+					</div>
+					<div class="large-1 columns">
+						@Html.LabelDropDownFor(m => m.PhoneNumber2TypeId, Model.PhoneNumberTypes)
+						@Html.ValidationMessageFor(m => m.PhoneNumber2TypeId)
+					</div>
+					<div class="large-2 columns">
+						@Html.LabelTextBoxFor(m => m.PhoneNumber2)
+						@Html.ValidationMessageFor(m => m.PhoneNumber2)
+					</div>
+					<div class="large-1 columns">
+						@Html.LabelDropDownFor(m => m.PhoneNumber3TypeId, Model.PhoneNumberTypes)
+						@Html.ValidationMessageFor(m => m.PhoneNumber3TypeId)
+					</div>
+					<div class="large-2 end columns">
+						@Html.LabelTextBoxFor(m => m.PhoneNumber3)
+						@Html.ValidationMessageFor(m => m.PhoneNumber3)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-1 columns">
+						@Html.LabelDropDownFor(m => m.Email1TypeId, Model.EmailTypes)
+						@Html.ValidationMessageFor(m => m.Email1TypeId)
+					</div>
+					<div class="large-5 columns">
+						@Html.LabelTextBoxFor(m => m.Email1)
+						@Html.ValidationMessageFor(m => m.Email1)
+					</div>
+					<div class="large-1 columns">
+						@Html.LabelDropDownFor(m => m.Email2TypeId, Model.EmailTypes)
+						@Html.ValidationMessageFor(m => m.Email2TypeId)
+					</div>
+					<div class="large-5 columns">
+						@Html.LabelTextBoxFor(m => m.Email2)
+						@Html.ValidationMessageFor(m => m.Email2)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						@Html.LabelTextBoxFor(m => m.Website)
+						@Html.ValidationMessageFor(m => m.Website)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						<h5>Physical Address</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-6 columns">
+						@Html.LabelTextBoxFor(m => m.PhysicalAddressStreet1)
+						@Html.ValidationMessageFor(m => m.PhysicalAddressStreet1)
+					</div>
+					<div class="large-6 columns">
+						@Html.LabelTextBoxFor(m => m.PhysicalAddressStreet2)
+						@Html.ValidationMessageFor(m => m.PhysicalAddressStreet2)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-6 columns">
+						@Html.LabelTextBoxFor(m => m.PhysicalAddressCity)
+						@Html.ValidationMessageFor(m => m.PhysicalAddressCity)
+					</div>
+					<div class="large-2 columns">
+						@Html.LabelDropDownFor(m => m.PhysicalAddressStateId, Model.AddressStates)
+						@Html.ValidationMessageFor(m => m.PhysicalAddressStateId)
+					</div>
+					<div class="large-1 columns end">
+						@Html.LabelTextBoxFor(m => m.PhysicalAddressPostalCode, null, new { placeholder = "12345" })
+						@Html.ValidationMessageFor(m => m.PhysicalAddressPostalCode)
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="large-12 columns">
+						<h5>Mailing Address</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-6 columns">
+						@Html.LabelTextBoxFor(m => m.MailingAddressStreet1)
+						@Html.ValidationMessageFor(m => m.MailingAddressStreet1)
+					</div>
+					<div class="large-6 columns">
+						@Html.LabelTextBoxFor(m => m.MailingAddressStreet2)
+						@Html.ValidationMessageFor(m => m.MailingAddressStreet2)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-6 columns">
+						@Html.LabelTextBoxFor(m => m.MailingAddressCity)
+						@Html.ValidationMessageFor(m => m.MailingAddressCity)
+					</div>
+					<div class="large-2 columns">
+						@Html.LabelDropDownFor(m => m.MailingAddressStateId, Model.AddressStates)
+						@Html.ValidationMessageFor(m => m.MailingAddressStateId)
+					</div>
+					<div class="large-1 columns end">
+						@Html.LabelTextBoxFor(m => m.MailingAddressPostalCode, null, new { placeholder = "12345" })
+						@Html.ValidationMessageFor(m => m.MailingAddressPostalCode)
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="large-12 columns">
+					<input type="submit" value="Create" class="button small success" />
+				</div>
+			</div>
+		}
+
+		<div>
+			@Html.ActionLink("Back to List", "Index")
+		</div>
+	</div>
+</div>

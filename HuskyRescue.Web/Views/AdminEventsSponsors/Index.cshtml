@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HuskyRescue.ViewModel.EventsSponsor.List>
+
+<div class="row">
+	<div class="large-6 small-12 small-centered large-centered columns"><h2>All Event Sponsorships</h2></div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+
+		<p>
+			@Html.ActionLink("Create New", "Create")
+		</p>
+		<table class="table">
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.SponsorName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.EventName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.HaveReceivedLogo)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.HaveReceivedSingage)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.HasPaid)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.AmountPaid)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.AddedByUserId)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.UpdatedByUserId)
+				</th>
+				<th></th>
+			</tr>
+
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.ActionLink(item.SponsorName, "Edit", item.IsPerson ? "AdminPeople" : "AdminOrganizations", new { @id = item.OrgPersonId })
+					</td>
+					<td>
+						@Html.ActionLink(item.EventName, "Edit", "AdminEvents", new { @id = item.EventId })
+					</td>
+					<td>
+						@Html.ActionLink(item.EventName, "Edit", "AdminEventsSponsorship", new { @id = item.EventSponsoshipId })
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.HaveReceivedLogo)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.HaveReceivedSingage)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.HasPaid)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.AmountPaid)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.AddedByUserId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.UpdatedByUserId)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+						@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+						@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+					</td>
+				</tr>
+			}
+
+		</table>
+	</div>
+</div>

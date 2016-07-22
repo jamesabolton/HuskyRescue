@@ -1,0 +1,339 @@
+@font-face {
+	font-family: 'Iconomous';
+	src:url('/Content/Fonts/Iconomous.eot');
+	src:url('/Content/Fonts/Iconomous.eot?#iefix') format('embedded-opentype'),
+		url('/Content/Fonts/Iconomous.woff') format('woff'),
+		url('/Content/Fonts/Iconomous.ttf') format('truetype'),
+		url('/Content/Fonts/Iconomous.svg#Iconomous') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'Iconomous';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"]:before {
+*/
+.icon-Music:before, .icon-Mail:before, .icon-Cloud:before, .icon-Price:before, .icon-Eye:before, .icon-Camera:before, .icon-Eye-Glasses:before, .icon-Cog:before, .icon-Home:before, .icon-Message:before, .icon-Mobile:before, .icon-Search:before, .icon-Place:before, .icon-Folder:before, .icon-Warning:before, .icon-Trash:before, .icon-Time:before, .icon-Lock:before, .icon-Picture:before, .icon-Book:before, .icon-Heart:before, .icon-Briefcase:before, .icon-Gift:before, .icon-Disc:before, .icon-Tablet:before, .icon-Game:before, .icon-Volume:before, .icon-Sound:before, .icon-Pie-Chart:before, .icon-Bar-Chart:before, .icon-Line-Chart:before, .icon-Share:before, .icon-Reply:before, .icon-Mute:before, .icon-Mouse:before, .icon-Keyboard:before, .icon-Men:before, .icon-Women:before, .icon-USB:before, .icon-Link:before, .icon-Tshirt:before, .icon-Newspaper:before, .icon-Thunder:before, .icon-Star:before, .icon-Flag:before, .icon-Rewind:before, .icon-Snowflake:before, .icon-Bulb:before, .icon-Refresh:before, .icon-Key:before, .icon-Power:before, .icon-Building:before, .icon-TV:before, .icon-Stop:before, .icon-PaperPlane:before, .icon-Pause:before, .icon-Money:before, .icon-Wallet:before, .icon-Right:before, .icon-Forward:before, .icon-ResizeUp:before, .icon-Food:before, .icon-Play:before, .icon-Information:before, .icon-Previous:before, .icon-Maintenance:before, .icon-Thumbnail:before, .icon-Up:before, .icon-Cancel:before, .icon-User:before, .icon-Eject:before, .icon-Community:before, .icon-ResizeDown:before, .icon-Next:before, .icon-Package:before, .icon-Down:before, .icon-Ticket:before, .icon-Monitor:before, .icon-Plane:before, .icon-Phone:before, .icon-Minus:before, .icon-Plus:before, .icon-Laptop:before, .icon-Calendar:before, .icon-Browser:before, .icon-Unlock:before, .icon-Couch:before, .icon-Download:before, .icon-Check:before, .icon-Left:before, .icon-Pencil:before, .icon-Lab:before, .icon-Bookmark:before, .icon-Video:before, .icon-Inbox:before, .icon-Cart:before, .icon-Upload:before, .icon-List:before, .icon-Cup:before, .icon-Paper:before {
+	font-family: 'Iconomous';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-Music:before {
+	content: "\e006";
+}
+.icon-Mail:before {
+	content: "\e005";
+}
+.icon-Cloud:before {
+	content: "\e004";
+}
+.icon-Price:before {
+	content: "\e003";
+}
+.icon-Eye:before {
+	content: "\e002";
+}
+.icon-Camera:before {
+	content: "\e001";
+}
+.icon-Eye-Glasses:before {
+	content: "\e000";
+}
+.icon-Cog:before {
+	content: "\3d";
+}
+.icon-Home:before {
+	content: "\22";
+}
+.icon-Message:before {
+	content: "\27";
+}
+.icon-Mobile:before {
+	content: "\7c";
+}
+.icon-Search:before {
+	content: "\7e";
+}
+.icon-Place:before {
+	content: "\5f";
+}
+.icon-Folder:before {
+	content: "\26";
+}
+.icon-Warning:before {
+	content: "\25";
+}
+.icon-Trash:before {
+	content: "\23";
+}
+.icon-Time:before {
+	content: "\40";
+}
+.icon-Lock:before {
+	content: "\21";
+}
+.icon-Picture:before {
+	content: "\3f";
+}
+.icon-Book:before {
+	content: "\2f";
+}
+.icon-Heart:before {
+	content: "\2e";
+}
+.icon-Briefcase:before {
+	content: "\2c";
+}
+.icon-Gift:before {
+	content: "\4d";
+}
+.icon-Disc:before {
+	content: "\4e";
+}
+.icon-Tablet:before {
+	content: "\42";
+}
+.icon-Game:before {
+	content: "\56";
+}
+.icon-Volume:before {
+	content: "\43";
+}
+.icon-Sound:before {
+	content: "\58";
+}
+.icon-Pie-Chart:before {
+	content: "\5a";
+}
+.icon-Bar-Chart:before {
+	content: "\4c";
+}
+.icon-Line-Chart:before {
+	content: "\4b";
+}
+.icon-Share:before {
+	content: "\4a";
+}
+.icon-Reply:before {
+	content: "\48";
+}
+.icon-Mute:before {
+	content: "\47";
+}
+.icon-Mouse:before {
+	content: "\46";
+}
+.icon-Keyboard:before {
+	content: "\44";
+}
+.icon-Men:before {
+	content: "\53";
+}
+.icon-Women:before {
+	content: "\41";
+}
+.icon-USB:before {
+	content: "\50";
+}
+.icon-Link:before {
+	content: "\4f";
+}
+.icon-Tshirt:before {
+	content: "\49";
+}
+.icon-Newspaper:before {
+	content: "\55";
+}
+.icon-Thunder:before {
+	content: "\59";
+}
+.icon-Star:before {
+	content: "\2a";
+}
+.icon-Flag:before {
+	content: "\54";
+}
+.icon-Rewind:before {
+	content: "\7b";
+}
+.icon-Snowflake:before {
+	content: "\52";
+}
+.icon-Bulb:before {
+	content: "\45";
+}
+.icon-Refresh:before {
+	content: "\57";
+}
+.icon-Key:before {
+	content: "\51";
+}
+.icon-Power:before {
+	content: "\6d";
+}
+.icon-Building:before {
+	content: "\6e";
+}
+.icon-TV:before {
+	content: "\62";
+}
+.icon-Stop:before {
+	content: "\63";
+}
+.icon-PaperPlane:before {
+	content: "\7a";
+}
+.icon-Pause:before {
+	content: "\6c";
+}
+.icon-Money:before {
+	content: "\24";
+}
+.icon-Wallet:before {
+	content: "\6b";
+}
+.icon-Right:before {
+	content: "\3e";
+}
+.icon-Forward:before {
+	content: "\7d";
+}
+.icon-ResizeUp:before {
+	content: "\3a";
+}
+.icon-Food:before {
+	content: "\6a";
+}
+.icon-Play:before {
+	content: "\68";
+}
+.icon-Information:before {
+	content: "\69";
+}
+.icon-Previous:before {
+	content: "\28";
+}
+.icon-Maintenance:before {
+	content: "\67";
+}
+.icon-Thumbnail:before {
+	content: "\66";
+}
+.icon-Up:before {
+	content: "\5e";
+}
+.icon-Cancel:before {
+	content: "\78";
+}
+.icon-User:before {
+	content: "\64";
+}
+.icon-Eject:before {
+	content: "\73";
+}
+.icon-Community:before {
+	content: "\61";
+}
+.icon-ResizeDown:before {
+	content: "\3b";
+}
+.icon-Next:before {
+	content: "\29";
+}
+.icon-Package:before {
+	content: "\5c";
+}
+.icon-Down:before {
+	content: "\76";
+}
+.icon-Ticket:before {
+	content: "\70";
+}
+.icon-Monitor:before {
+	content: "\6f";
+}
+.icon-Plane:before {
+	content: "\60";
+}
+.icon-Phone:before {
+	content: "\75";
+}
+.icon-Minus:before {
+	content: "\2d";
+}
+.icon-Plus:before {
+	content: "\2b";
+}
+.icon-Laptop:before {
+	content: "\79";
+}
+.icon-Calendar:before {
+	content: "\74";
+}
+.icon-Browser:before {
+	content: "\72";
+}
+.icon-Unlock:before {
+	content: "\65";
+}
+.icon-Couch:before {
+	content: "\77";
+}
+.icon-Download:before {
+	content: "\71";
+}
+.icon-Check:before {
+	content: "\30";
+}
+.icon-Left:before {
+	content: "\3c";
+}
+.icon-Pencil:before {
+	content: "\39";
+}
+.icon-Lab:before {
+	content: "\38";
+}
+.icon-Bookmark:before {
+	content: "\37";
+}
+.icon-Video:before {
+	content: "\36";
+}
+.icon-Inbox:before {
+	content: "\35";
+}
+.icon-Cart:before {
+	content: "\34";
+}
+.icon-Upload:before {
+	content: "\33";
+}
+.icon-List:before {
+	content: "\32";
+}
+.icon-Cup:before {
+	content: "\31";
+}
+.icon-Paper:before {
+	content: "\e007";
+}

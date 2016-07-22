@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8" />
+
+	@*Set the viewport width to device width for mobile *@
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>@ViewBag.Title - Welcome to Foundation</title>
+	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+	@Styles.Render("~/Content/foundation/css")
+	@Styles.Render("~/Content/css")
+
+	@RenderSection("head", required: false)
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<nav class="top-bar" data-topbar role="navigation">
+		<ul class="title-area">
+			<li class="name">
+				<h1><a href="#">TXHR Admin Site</a></h1>
+			</li>
+			<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+			<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		</ul>
+
+		<section class="top-bar-section">
+			<!-- Right Nav Section -->
+			@*<ul class="right">
+				<li class="active"><a href="#">Right Button Active</a></li>
+				<li class="has-dropdown">
+					<a href="#">Right Button Dropdown</a>
+					<ul class="dropdown">
+						<li><a href="#">First link in dropdown</a></li>
+						<li class="active"><a href="#">Active link in dropdown</a></li>
+					</ul>
+				</li>
+			</ul>*@
+
+			<!-- Left Nav Section -->
+			<ul class="left">
+				<li class="has-dropdown">
+					<a href="#">Users</a>
+					<ul class="dropdown">
+						<li>@Html.ActionLink("Resources", "Index", "AdminIdentityResources")</li>
+						<li>@Html.ActionLink("Roles", "Index", "AdminIdentityRoles")</li>
+						<li>@Html.ActionLink("Users", "Index", "AdminIdentityUsers")</li>
+					</ul>
+				</li>
+				@*<li class="has-dropdown">
+					@Html.ActionLink("Online Store", "AdminStoreDashboard")
+					<ul class="dropdown">
+						<li>@Html.ActionLink("Products", "Index", "AdminStoreProducts")</li>
+						<li>@Html.ActionLink("Orders", "Index", "AdminStoreOrders")</li>
+					</ul>
+				</li>*@
+				<li>
+					@Html.ActionLink("Huskies", "AdminAnimalsDashboard")
+				</li>
+				<li>
+					@Html.ActionLink("People", "AdminPeopleDashboard")
+				</li>
+				<li>
+					@Html.ActionLink("Organizations", "Index", "AdminOrganizations")
+				</li>
+				<li class="has-dropdown">
+					@Html.ActionLink("Events", "AdminEventsDashboard")
+					<ul class="dropdown">
+						<li>@Html.ActionLink("All Events", "Index", "AdminEvents")</li>
+						<li>@Html.ActionLink("Event Sponsorships", "Index", "AdminEventsSponsorship")</li>
+						<li>@Html.ActionLink("Event Sponsors", "Index", "AdminEventsSponsors")</li>
+						<li>@Html.ActionLink("Golf Tournaments", "Index", "AdminEventsGolfTournaments")</li>
+						<li>@Html.ActionLink("RoughRider Games", "Index", "AdminEventsRoughRiders")</li>
+					</ul>
+				</li>
+				<li>
+					@Html.ActionLink("Donations", "AdminDonations")
+				</li>
+				<li>
+					@Html.ActionLink("System Settings", "Index", "AdminSystemSettings")
+				</li>
+			</ul>
+		</section>
+	</nav>
+
+
+	@RenderBody()
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/foundation")
+	@Scripts.Render("~/bundles/jqueryplugins")
+	<script type="text/javascript">
+		$(document).foundation();
+	</script>
+	@*Use the Scripts section to define page specific scripts*@
+	@RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,151 @@
+﻿@model List<HuskyRescue.ViewModel.Common.FacebookEvent>
+
+@section head {
+	@Styles.Render("~/Content/css/Home-Index")
+}
+
+@section scripts
+{
+	@Scripts.Render("~/bundles/Home-Index")
+}
+
+<div class="row">
+	<div class="large-12 columns">
+		<div id="slide">
+			<div data-src="/Content/Images/Controllers/Home/Index/slider3a.png" style="width: 100%"></div>
+			<div data-src="/Content/Images/Controllers/Home/Index/slider2a.png" style="width: 100%"></div>
+			<div data-src="/Content/Images/Controllers/Home/Index/slider1a.png" style="width: 100%"></div>
+		</div>
+	</div>
+</div>
+
+<div class="row main-highlight" data-equalizer>
+	<div class="large-4 medium-4 small-12 columns">
+		<section class="main-highlight-box" data-equalizer-watch>
+			<div class="header">
+				<h3><i class="fa fa-gift"></i>Donate To TXHR Now</h3>
+			</div>
+			<div class="main-highlight-content">
+				<div class="row">
+					<div class="large-6 medium-6 small-6 columns">
+						<img src="/Content/Images/Huskies/FaceShot_01.jpg" style="max-height: 250px" />
+					</div>
+					<div class="large-6 medium-6 small-6 columns">
+						<div class="row">
+							<div class="large-12 columns">
+								<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2">
+									<li><label for="donate-25"><input type="radio" id="donate-25" name="donate-amount" value="25" /> $25</label></li>
+									<li><label for="donate-50"><input type="radio" id="donate-50" name="donate-amount" value="50" /> $50</label></li>
+									<li><label for="donate-75"><input type="radio" id="donate-75" name="donate-amount" value="75" /> $75</label></li>
+									<li><label for="donate-100"><input type="radio" id="donate-100" name="donate-amount" value="100" /> $100</label></li>
+									<li><label for="donate-250"><input type="radio" id="donate-250" name="donate-amount" value="250" /> $250</label></li>
+									<li><label for="donate-500"><input type="radio" id="donate-500" name="donate-amount" value="500" /> $500</label></li>
+									<li><label for="donate-1000"><input type="radio" id="donate-1000" name="donate-amount" value="1000" /> $1000</label></li>
+									<li><label for="donate-Other"><input type="radio" id="donate-Other" name="donate-amount" value="0" /> Other</label></li>
+								</ul>
+								@*<input type="checkbox" id="donate-monthly" name="donate-monthly" /><label for="donate-monthly" style="color: mediumblue;"> Donate monthly</label>*@
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-12 columns">
+								@Html.ActionLink("Donate Now", "Donate",new {controller="Donate"}, new { @class = "tiny button", style = "margin-top: 20px; margin-bottom: 0;", id = "donateNowLink" })
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="large-4 medium-4 small-12 columns">
+		<section class="main-highlight-box" data-equalizer-watch>
+			<div class="header">
+				<h3><i class="fa fa-users"></i>Volunteer / Foster</h3>
+			</div>
+			<div class="main-highlight-content">
+				<div class="row">
+					<div class="large-12 columns">
+						<img src="/Content/Images/Huskies/FaceShot_27.jpg" style="width:100%" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						<span>
+							Volunteering and/or fostering with Texas Husky Rescue is one of the best ways to help the huskies. @Html.ActionLink("Start volunteering today!", "Volunteer", new { controller = "Home" })
+						</span>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="large-4 medium-4 small-12 columns">
+		<section class="main-highlight-box" data-equalizer-watch>
+			<div class="header">
+				<h3><i class="fa fa-paw"></i>Adopt</h3>
+			</div>
+			<div class="main-highlight-content">
+				<div class="row">
+					<div class="large-6 medium-6 small-6 columns">
+						<span>Looking for your next four legged best friend? @Html.ActionLink("Check out our adoptable huskies", "Index", new { controller = "Adoption" })</span>
+					</div>
+					<div class="large-6 medium-6 small-6 columns">
+						<img src="/Content/Images/Huskies/Pose_13.jpg" style="max-height: 250px" />
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+<div class="row main-highlight" data-equalizer>
+	<div class="large-12 medium-12 small-12 columns">
+		<section class="main-highlight-box" data-equalizer-watch>
+			<div class="header">
+				<h3><i class="fa fa-calendar"></i>Upcoming Events</h3>
+			</div>
+			<div class="main-highlight-content">
+				@if (Model.Count > 0)
+				{
+					<ul>
+						@foreach (var groupEvent in Model)
+						{
+							<li>
+								@groupEvent.ToString()
+								(<a href="@groupEvent.Link" target="_blank">view details on FaceBook</a>)
+
+							</li>
+						}
+					</ul>
+				}
+				else
+				{
+					<p>No upcoming events at this time. </p>
+				}
+			</div>
+		</section>
+	</div>
+	@*<div class="large-6 medium-6 small-12 columns">
+		<section class="main-highlight-box" data-equalizer-watch>
+			<div class="header">
+				<h3><i class="fa fa-clock-o"></i>Count Down To The 2015 Golf Tournament</h3>
+			</div>
+			<div class="main-highlight-content">
+				<div class="row">
+					<div class="large-12 columns">
+						<div class="row">
+							<div class="columns small-8 small-centered">
+								<div id="countdown-time"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>*@
+</div>
+
+@*<div class="row">
+		<div class="large-12 columns">
+			Store products
+		</div>
+	</div>*@
+

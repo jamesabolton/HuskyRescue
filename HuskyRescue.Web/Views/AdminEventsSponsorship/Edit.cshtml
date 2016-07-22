@@ -1,0 +1,102 @@
+﻿@using HuskyRescue.Web.HtmlHelpers
+@model HuskyRescue.ViewModel.EventsSponsorship.Edit
+
+<div class="row">
+	<div class="large-12 columns">
+		@using (Html.BeginForm("Edit", "AdminEventsSponsorship", FormMethod.Post, new { id = "adminEventsSponsorship" }))
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+
+			@Html.HiddenFor(m => m.Id)
+			@Html.HiddenFor(m => m.AddedByUserId)
+			@Html.HiddenFor(m => m.IsDeleted)
+
+			<div class="row">
+				<div class="large-6 small-12 small-centered large-centered columns"><h2>Edit Event Sponsorship</h2></div>
+			</div>
+
+			<div class="row">
+				<div class="large-2 columns end">
+					@Html.LabelCheckboxFor(m => m.IsActive)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.Name, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.Name)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelDropDownFor(m => m.EventId, Model.Events, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.EventId)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-3 columns">
+					@Html.LabelTextBoxFor(m => m.Amount, null, new { placeholder = "required", type="number", step="0.01" })
+					@Html.ValidationMessageFor(m => m.Amount)
+				</div>
+				<div class="large-3 columns">
+					@Html.LabelTextBoxFor(m => m.NumberOfAllowedSponsors, null, new { placeholder = "1", type = "number", step = "1" })
+					@Html.ValidationMessageFor(m => m.NumberOfAllowedSponsors)
+				</div>
+				<div class="large-3 columns end">
+					@Html.LabelTextBoxFor(m => m.NumberOfSponsors, null, new { placeholder = "0", type = "number", step = "1" })
+					@Html.ValidationMessageFor(m => m.NumberOfSponsors)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="row">
+						<div class="large-12 columns">
+							<label>Detailed bullet points</label>
+						</div>
+					</div>
+					@for (var i = 0; i < Model.Items.Count; i++)
+					{
+						@Html.HiddenFor(m => Model.Items[i].Id)
+						@Html.HiddenFor(m => Model.Items[i].EventSponsorshipId)
+						<div class="row collapse prefix-radius">
+							<div class="small-1 columns">
+								<span class="prefix">Detail Item #@(i + 1)</span>
+							</div>
+							<div class="small-11 columns">
+								@Html.TextBoxFor(m => Model.Items[i].Value)
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextAreaFor(m => m.PublicDescription, 2, 20)
+					@Html.ValidationMessageFor(m => m.PublicDescription)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextAreaFor(m => m.InternalNotes, 2, 20)
+					@Html.ValidationMessageFor(m => m.InternalNotes)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<input type="submit" value="Update" class="button small success" />
+				</div>
+			</div>
+		}
+
+		<div>
+			@Html.ActionLink("Back to List", "Index")
+		</div>
+	</div>
+</div>

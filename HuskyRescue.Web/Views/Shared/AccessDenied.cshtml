@@ -1,0 +1,15 @@
+﻿@{
+	ViewBag.Title = "Access Denied";
+}
+
+<h1 class="text-danger">Error - Access Denied to Resource</h1>
+@{
+	if (String.IsNullOrEmpty(ViewBag.errorMessage))
+	{
+		<h2 class="text-danger">You do not have access to the requested resource.</h2>
+	}
+	else
+	{
+		<h2 class="text-danger">@ViewBag.errorMessage</h2>
+	}
+}

@@ -1,0 +1,79 @@
+﻿@using HuskyRescue.Web.HtmlHelpers
+@model HuskyRescue.ViewModel.Admin.Users.Edit
+
+<div class="row">
+	<div class="large-12 columns">
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+			@Html.HiddenFor(model => model.Id)
+
+			<div class="row">
+				<div class="large-6 small-12 small-centered large-centered columns"><h2>Edit User</h2></div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.UserName, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.UserName)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.Email, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.Email)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelCheckboxFor(m => m.EmailConfirmed)
+					@Html.ValidationMessageFor(m => m.EmailConfirmed)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.PhoneNumber)
+					@Html.ValidationMessageFor(m => m.PhoneNumber)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelCheckboxFor(m => m.PhoneNumberConfirmed)
+					@Html.ValidationMessageFor(m => m.PhoneNumberConfirmed)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelCheckboxFor(m => m.TwoFactorEnabled)
+					@Html.ValidationMessageFor(m => m.TwoFactorEnabled)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelCheckboxFor(m => m.LockoutEnabled)
+					@Html.ValidationMessageFor(m => m.LockoutEnabled)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<label>Roles</label>
+					<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+						@foreach (var cbox in Model.Roles)
+						{
+							<li>@Html.LabelCheckboxFor(m => m.Roles.Single(r => r.Id.Equals(cbox.Id) && r.Name.Equals(cbox.Name)).Selected, cbox.Name, cbox.Id)</li>
+						}
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<input type="submit" value="Save" class="button small success" />
+				</div>
+			</div>
+		}
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		@Html.ActionLink("Back to List", "Index")
+	</div>
+</div>

@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuskyRescue.Web", "HuskyRescue.Web\HuskyRescue.Web.csproj", "{0EAD9570-99CB-4DFB-B899-0E15A58FE624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuskyRescue.DataModel", "HuskyRescue.DataModel\HuskyRescue.DataModel.csproj", "{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuskyRescue.ViewModel", "HuskyRescue.ViewModel\HuskyRescue.ViewModel.csproj", "{BDE8197A-5524-4485-8408-F27143244070}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuskyRescue.BusinessLogic", "HuskyRescue.BusinessLogic\HuskyRescue.BusinessLogic.csproj", "{E5F76F64-BE27-47EE-BC0E-314B7069CA24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56318959-E567-4077-98A2-537399E227C2}"
+	ProjectSection(SolutionItems) = preProject
+		Pvt-install.txt = Pvt-install.txt
+		Pvt-Notes.txt = Pvt-Notes.txt
+		WebEssentials-Settings.json = WebEssentials-Settings.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C84B018E-EB9C-4383-BB63-3D371D2CEA8F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HuskyRescue.Database", "HuskyRescue.Database\HuskyRescue.Database.sqlproj", "{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EAD9570-99CB-4DFB-B899-0E15A58FE624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EAD9570-99CB-4DFB-B899-0E15A58FE624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EAD9570-99CB-4DFB-B899-0E15A58FE624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EAD9570-99CB-4DFB-B899-0E15A58FE624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EAD9570-99CB-4DFB-B899-0E15A58FE624}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{0EAD9570-99CB-4DFB-B899-0E15A58FE624}.Test|Any CPU.Build.0 = Test|Any CPU
+		{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{BBD2E936-3C38-40CC-9EE8-3E1D423BE1A0}.Test|Any CPU.Build.0 = Test|Any CPU
+		{BDE8197A-5524-4485-8408-F27143244070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE8197A-5524-4485-8408-F27143244070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE8197A-5524-4485-8408-F27143244070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE8197A-5524-4485-8408-F27143244070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE8197A-5524-4485-8408-F27143244070}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{BDE8197A-5524-4485-8408-F27143244070}.Test|Any CPU.Build.0 = Test|Any CPU
+		{E5F76F64-BE27-47EE-BC0E-314B7069CA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F76F64-BE27-47EE-BC0E-314B7069CA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F76F64-BE27-47EE-BC0E-314B7069CA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F76F64-BE27-47EE-BC0E-314B7069CA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F76F64-BE27-47EE-BC0E-314B7069CA24}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{E5F76F64-BE27-47EE-BC0E-314B7069CA24}.Test|Any CPU.Build.0 = Test|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{1D70FFFE-1A4A-4CA8-8EFF-E376E928C1B2}.Test|Any CPU.Deploy.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+﻿@model Enum
+
+@if (EnumHelper.IsValidForEnumHelper(ViewData.ModelMetadata))
+{
+	@Html.EnumDropDownListFor(model => model)
+}
+else
+{
+	@Html.TextBoxFor(model => model)
+}

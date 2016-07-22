@@ -1,0 +1,137 @@
+﻿@using HuskyRescue.Web.HtmlHelpers
+@using GoogleRecaptchaMvc;
+@model HuskyRescue.ViewModel.Home.Contact
+
+@section head {
+	@Styles.Render("~/Content/css/dropzone")
+}
+
+@section scripts {
+	@Scripts.Render("~/bundles/dropzone")
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script type="text/javascript">
+		Dropzone.options.contactForm = {
+			autoProcessQueue: false,
+			uploadMultiple: true,
+			parallelUploads: 100,
+			maxFiles: 5,
+			maxFilesize: 5, // MBs
+			previewsContainer: ".dropzone-previews",
+			acceptedFiles: "image/*,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,application/rtf,text/richtext,text/plain,",
+			init: function () {
+				var myDropzone = this;
+
+				// First change the button to actually tell Dropzone to process the queue.
+				this.element.querySelector("input[type=submit]").addEventListener("click", function (e) {
+					// Make sure that the form isn't actually being sent.
+					e.preventDefault();
+					e.stopPropagation();
+
+					var form = $(this).closest('#contactForm');
+					if (form.valid() == true) {
+						if (myDropzone.getQueuedFiles().length > 0) {
+							myDropzone.processQueue();
+						} else {
+							$("#contactForm").submit();
+						}
+					}
+				});
+
+				// Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+				// of the sending event because uploadMultiple is set to true.
+				this.on("sendingmultiple", function () {
+					// Gets triggered when the form is actually being sent.
+					// Hide the success button or the complete form.
+				});
+				this.on("successmultiple", function (files, response) {
+					// Gets triggered when the files have successfully been sent.
+					// Redirect user or notify of success.
+				});
+				this.on("errormultiple", function (files, response) {
+					// Gets triggered when there was an error sending the files.
+					// Maybe show form again, and notify user of error
+				});
+				this.on("success", function (files, response) {
+					// gets triggered when the files have successfully been sent.
+					// redirect user or notify of success
+					window.location.replace("/Home/ThankYou");
+				});
+			}
+		}
+	</script>
+}
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "dropzone", id = "contactForm", enctype = "multipart/form-data" }))
+{
+	@Html.AntiForgeryToken()
+	<div class="row">
+		<div class="small-8 small-centered columns">
+			<h2>Contact TXHR</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.ValidationSummary(true)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-4 columns">
+			@Html.LabelTextBoxFor(model => model.NameFirst)
+			@Html.ValidationMessageFor(m => m.NameFirst)
+		</div>
+		<div class="large-4 columns">
+			@Html.LabelTextBoxFor(model => model.NameLast)
+			@Html.ValidationMessageFor(m => m.NameLast)
+		</div>
+		<div class="large-2 columns end">
+			@Html.LabelTextBoxFor(model => model.Number)
+			@Html.ValidationMessageFor(m => m.Number)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-4 columns">
+			@Html.LabelTextBoxFor(model => model.EmailAddress)
+			@Html.ValidationMessageFor(m => m.EmailAddress)
+		</div>
+		<div class="large-4 columns end">
+			@Html.LabelDropDownFor(m => m.ContactReasonId, Model.ContactReasonList)
+			@Html.ValidationMessageFor(m => m.ContactReasonId)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(model => model.Message)
+			@Html.ValidationMessageFor(m => m.Message)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 small-12 columns">
+			@Html.LabelCheckboxFor(m => m.IsEmailable)
+			@Html.ValidationMessageFor(m => m.IsEmailable)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-4 medium-4 small-2 columns"></div>
+		<div class="large-4 medium-4 small-12 large-centered medium-centered small-centered columns">
+			<div class="fallback">
+				<input name="file" type="file" multiple />
+			</div>
+			<div class="dz-message" >
+				<p class="large-text-center columns">Drag and drop files here to upload or click here to select files to upload</p>
+			</div>
+			<!-- show preview of documents being uploaded -->
+			<div class="dropzone-previews"></div>
+		</div>
+		<div class="large-4 medium-4 small-2 columns"></div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.RecaptchaV2(@ViewData["recapPublicKey"].ToString())
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			<input type="submit" value="Send Message" class="button" id="contactButton">
+		</div>
+	</div>
+}

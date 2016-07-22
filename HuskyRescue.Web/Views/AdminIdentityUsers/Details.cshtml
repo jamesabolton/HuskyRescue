@@ -1,0 +1,64 @@
+﻿@model HuskyRescue.ViewModel.Admin.Users.Detail
+
+<div class="row">
+	<div class="large-12 columns">
+
+		<div class="row">
+			<div class="large-6 small-12 small-centered large-centered columns"><h2>User Details</h2></div>
+		</div>
+
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.UserName)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.UserName)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.Email)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.Email)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.EmailConfirmed)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.EmailConfirmed)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.PhoneNumber)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.PhoneNumber)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.PhoneNumberConfirmed)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.PhoneNumberConfirmed)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.TwoFactorEnabled)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.TwoFactorEnabled)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.LockoutEnabled)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.LockoutEnabled)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.LockoutEndDateUtc)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.LockoutEndDateUtc)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.AccessFailedCount)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.AccessFailedCount)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.Roles)</div>
+			<div class="large-10 columns">
+				@foreach (var role in Model.Roles)
+				{
+					@Html.Raw(role.Name)
+				}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+		@Html.ActionLink("Back to List", "Index")
+
+
+	</div>
+</div>

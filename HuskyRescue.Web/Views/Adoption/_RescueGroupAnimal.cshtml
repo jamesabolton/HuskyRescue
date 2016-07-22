@@ -1,0 +1,26 @@
+﻿@using HuskyRescue.Web.HtmlHelpers
+@model HuskyRescue.ViewModel.Common.RescueGroupAnimal
+<div class="AnimalCell" id="@Model.AnimalId">
+	<table>
+		<tbody>
+			<tr>
+				<td class="AnimalThumbPix">
+					@if (Model.AnimalPictures != null)
+					{
+						if (Model.AnimalPictures.Count > 0)
+						{
+							if (!string.IsNullOrEmpty(Model.AnimalPictures[0].UrlSecureThumbnail))
+							{
+								@Html.Image(Model.AnimalPictures[0].UrlSecureThumbnail, Model.AnimalName, new { width = "100" })
+							}
+						}
+					}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="petinfo">
+		<div class="petSummaryText petName">@Html.DisplayTextFor(model => model.AnimalName)</div>
+		<div class="petSummaryText">@Html.DisplayTextFor(model => model.AnimalBreed)</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+﻿@Html.Partial("_Menu")
+@section scripts {
+	<script type="text/javascript">
+		$(document).ready(function ($) {
+			// Get current url
+			// Select an a element that has the matching href and apply a class of 'active'. Also prepend a - to the content of the link
+			var url = window.location.pathname;
+			$('.golf-nav dd a[href="' + url + '"]').parent().addClass('active');
+		});
+	</script>
+}
+
+<div class="row">
+	<div class="large-12 columns text-center">
+		<h3>Sponsors</h3>
+	</div>
+</div>
+
+@*<div class="row">
+	<div class="large-12 columns">
+		<div class="panel callout radius text-center sponsor">
+			<h4><a href="http://redvelvetinn.com/" target="_blank">TITLE SPONSOR</a></h4>
+			<div class="text-center">
+				<img src="/Content/Images/Sponsors/RVI2.png" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-10 columns large-centered">
+		<div class="panel callout radius text-center sponsor">
+			<h4><a href="http://www.onlinecommunityservices.com/" target="_blank">PUTTING GREEN SPONSOR</a></h4>
+			<div class="text-center">
+				<img src="/Content/Images/Controllers/Golf/OCS-Logo-FinalblueS1.jpg" />
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="large-1 medium-1 columns"> &nbsp;</div>
+	<div class="large-5 medium-5 columns">
+		<div class="panel callout radius text-center sponsor">
+			<h4><a href="http://www.hollywoodfeed.com/" target="_blank">HOLE SPONSOR</a></h4>
+			<div class="text-center">
+				<img src="/Content/Images/Controllers/Golf/Hollywood-Feed.jpg" />
+			</div>
+		</div>
+	</div>
+	<div class="large-5 medium-5 columns">
+		<div class="panel callout radius text-center sponsor">
+			<h4><a href="http://nineonedesign.com/" target="_blank">HOLE SPONSOR</a></h4>
+			<div class="text-center">
+				<img src="/Content/Images/Controllers/Golf/91-Design.jpg"/>
+			</div>
+		</div>
+	</div>
+	<div class="large-1 medium-1 columns"> &nbsp;</div>
+</div>*@
+

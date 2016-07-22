@@ -1,0 +1,32 @@
+﻿@model HuskyRescue.ViewModel.Admin.Roles.Detail
+
+<div class="row">
+	<div class="large-12 columns">
+
+		<div class="row">
+			<div class="large-6 small-12 small-centered large-centered columns"><h2>Resource Details</h2></div>
+		</div>
+
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.Name)</div>
+			<div class="large-10 columns">@Html.DisplayFor(m => m.Name)</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">@Html.LabelFor(m => m.Resources)</div>
+			<div class="large-10 columns">
+				@foreach (var resource in Model.Resources)
+				{
+					@Html.Raw(resource.Name + " with access " + resource.OperationDesc)
+				}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+		@Html.ActionLink("Back to List", "Index")
+
+
+	</div>
+</div>

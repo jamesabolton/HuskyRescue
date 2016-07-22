@@ -1,0 +1,423 @@
+﻿@using HuskyRescue.Web.HtmlHelpers;
+@using GoogleRecaptchaMvc;
+@model HuskyRescue.ViewModel.Golf.Register.CreatePublic
+
+@section scripts {
+	<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+	<script src="https://js.braintreegateway.com/v1/braintree-data.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+	@Scripts.Render("~/bundles/Golf-Register")
+	<script type="text/javascript">
+		$(document).ready(function ($) {
+			// Get current url
+			// Select an a element that has the matching href and apply a class of 'active'. Also prepend a - to the content of the link
+			var url = window.location.pathname;
+			$('.golf-nav dd a[href="' + url + '"]').parent().addClass('active');
+		});
+	</script>
+}
+
+@Html.Partial("_Menu")
+
+@using (Html.BeginForm("Register", "Golf", FormMethod.Post, new { id = "golfRegisterForm", autocomplete = "off" }))
+{
+	@Html.AntiForgeryToken()
+	@Html.HiddenFor(m => m.BanquetTicketCost)
+	@Html.HiddenFor(m => m.GolfTicketCost)
+	@Html.HiddenFor(m => m.Attendee1TicketPrice)
+	@Html.HiddenFor(m => m.Attendee2TicketPrice)
+	@Html.HiddenFor(m => m.Attendee3TicketPrice)
+	@Html.HiddenFor(m => m.Attendee4TicketPrice)
+	<input type="hidden" id="clientToken" value="@ViewData["clientToken"]" />
+	<input type="hidden" id="merchantId" value="@ViewData["merchantId"]" />
+	<input type="hidden" id="environment" value="@ViewData["environment"]" />
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.ValidationSummary(true)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h4>Attendee Information</h4>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<p>
+				First attendee - the primary contact if there is more than one person registered
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1FirstName)
+			@Html.ValidationMessageFor(m => m.Attendee1FirstName)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1LastName)
+			@Html.ValidationMessageFor(m => m.Attendee1LastName)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1AddressStreet1)
+			@Html.ValidationMessageFor(m => m.Attendee1AddressStreet1)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1AddressStreet2)
+			@Html.ValidationMessageFor(m => m.Attendee1AddressStreet2)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1AddressCity)
+			@Html.ValidationMessageFor(m => m.Attendee1AddressCity)
+		</div>
+		<div class="large-2 columns">
+			@Html.LabelDropDownFor(m => m.Attendee1AddressStateId, Model.States)
+			@Html.ValidationMessageFor(m => m.Attendee1AddressStateId)
+		</div>
+		<div class="large-1 columns end">
+			@Html.LabelTextBoxFor(m => m.Attendee1AddressPostalCode, null, new { placeholder = "12345", maxlength = 5 })
+			@Html.ValidationMessageFor(m => m.Attendee1AddressPostalCode)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1HomePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee1HomePhoneNumber)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1MobilePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee1MobilePhoneNumber)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelTextBoxFor(m => m.Attendee1EmailAddress)
+			@Html.ValidationMessageFor(m => m.Attendee1EmailAddress)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelRadioButtonFor(m => m.Attendee1Type, Model.AttendeeTypes)
+			@Html.ValidationMessageFor(m => m.Attendee1Type)
+		</div>
+	</div>
+
+	<br />
+	<div class="row">
+		<div class="large-12 columns">
+			<p>
+				Second attendee
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2FirstName)
+			@Html.ValidationMessageFor(m => m.Attendee2FirstName)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2LastName)
+			@Html.ValidationMessageFor(m => m.Attendee2LastName)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2AddressStreet1)
+			@Html.ValidationMessageFor(m => m.Attendee2AddressStreet1)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2AddressStreet2)
+			@Html.ValidationMessageFor(m => m.Attendee2AddressStreet2)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2AddressCity)
+			@Html.ValidationMessageFor(m => m.Attendee2AddressCity)
+		</div>
+		<div class="large-2 columns">
+			@Html.LabelDropDownFor(m => m.Attendee2AddressStateId, Model.States)
+			@Html.ValidationMessageFor(m => m.Attendee2AddressStateId)
+		</div>
+		<div class="large-1 columns end">
+			@Html.LabelTextBoxFor(m => m.Attendee2AddressPostalCode, null, new { placeholder = "12345", maxlength = 5 })
+			@Html.ValidationMessageFor(m => m.Attendee2AddressPostalCode)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2HomePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee2HomePhoneNumber)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2MobilePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee2MobilePhoneNumber)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelTextBoxFor(m => m.Attendee2EmailAddress)
+			@Html.ValidationMessageFor(m => m.Attendee2EmailAddress)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelRadioButtonFor(m => m.Attendee2Type, Model.AttendeeTypes)
+			@Html.ValidationMessageFor(m => m.Attendee2Type)
+		</div>
+	</div>
+
+	<br />
+	<div class="row">
+		<div class="large-12 columns">
+			<p>
+				Third attendee
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3FirstName)
+			@Html.ValidationMessageFor(m => m.Attendee3FirstName)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3LastName)
+			@Html.ValidationMessageFor(m => m.Attendee3LastName)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3AddressStreet1)
+			@Html.ValidationMessageFor(m => m.Attendee3AddressStreet1)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3AddressStreet2)
+			@Html.ValidationMessageFor(m => m.Attendee3AddressStreet2)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3AddressCity)
+			@Html.ValidationMessageFor(m => m.Attendee3AddressCity)
+		</div>
+		<div class="large-2 columns">
+			@Html.LabelDropDownFor(m => m.Attendee3AddressStateId, Model.States)
+			@Html.ValidationMessageFor(m => m.Attendee3AddressStateId)
+		</div>
+		<div class="large-1 columns end">
+			@Html.LabelTextBoxFor(m => m.Attendee3AddressPostalCode, null, new { placeholder = "12345", maxlength = 5 })
+			@Html.ValidationMessageFor(m => m.Attendee3AddressPostalCode)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3HomePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee3HomePhoneNumber)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3MobilePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee3MobilePhoneNumber)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelTextBoxFor(m => m.Attendee3EmailAddress)
+			@Html.ValidationMessageFor(m => m.Attendee3EmailAddress)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelRadioButtonFor(m => m.Attendee3Type, Model.AttendeeTypes)
+			@Html.ValidationMessageFor(m => m.Attendee3Type)
+		</div>
+	</div>
+
+	<br />
+	<div class="row">
+		<div class="large-12 columns">
+			<p>
+				Fourth attendee
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4FirstName)
+			@Html.ValidationMessageFor(m => m.Attendee4FirstName)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4LastName)
+			@Html.ValidationMessageFor(m => m.Attendee4LastName)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4AddressStreet1)
+			@Html.ValidationMessageFor(m => m.Attendee4AddressStreet1)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4AddressStreet2)
+			@Html.ValidationMessageFor(m => m.Attendee4AddressStreet2)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4AddressCity)
+			@Html.ValidationMessageFor(m => m.Attendee4AddressCity)
+		</div>
+		<div class="large-2 columns">
+			@Html.LabelDropDownFor(m => m.Attendee4AddressStateId, Model.States)
+			@Html.ValidationMessageFor(m => m.Attendee4AddressStateId)
+		</div>
+		<div class="large-1 columns end">
+			@Html.LabelTextBoxFor(m => m.Attendee4AddressPostalCode, null, new { placeholder = "12345", maxlength = 5 })
+			@Html.ValidationMessageFor(m => m.Attendee4AddressPostalCode)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4HomePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee4HomePhoneNumber)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4MobilePhoneNumber)
+			@Html.ValidationMessageFor(m => m.Attendee4MobilePhoneNumber)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelTextBoxFor(m => m.Attendee4EmailAddress)
+			@Html.ValidationMessageFor(m => m.Attendee4EmailAddress)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 end columns">
+			@Html.LabelRadioButtonFor(m => m.Attendee4Type, Model.AttendeeTypes)
+			@Html.ValidationMessageFor(m => m.Attendee4Type)
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(m => m.CustomerNotes)
+			@Html.ValidationMessageFor(m => m.CustomerNotes)
+		</div>
+	</div>
+
+	<hr />
+	<div class="row">
+		<div class="large-12 columns">
+			<h4>Payment</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextBoxFor(m => m.AmountDue, null, new { @readonly = "true" })
+			@Html.ValidationMessageFor(m => m.AmountDue)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelRadioButtonFor(m => m.PaymentMethod, Model.PaymentMethods)
+		</div>
+	</div>
+	@*@Html.HiddenFor(m => m.PaymentMethod, new { value = "creditcard" })*@
+	<br />
+
+	<div class="row">
+		<div class="large-12 columns">
+			<label for="payeelist">Prepopulate billing information from</label>
+			<select id="payeelist" name="payeelist">
+				<option value="">-- select player -- </option>
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.PayeeFirstName)
+			@Html.ValidationMessageFor(m => m.PayeeFirstName)
+		</div>
+		<div class="large-6 columns">
+			@Html.LabelTextBoxFor(m => m.PayeeLastName)
+			@Html.ValidationMessageFor(m => m.PayeeLastName)
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 columns end">
+			@Html.LabelTextBoxFor(m => m.PayeeEmailAddress)
+			@Html.ValidationMessageFor(m => m.PayeeEmailAddress)
+		</div>
+	</div>
+	<div id="creditcardrow" style="display:none">
+		<div class="row">
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.PayeeAddressStreet1)
+				@Html.ValidationMessageFor(m => m.PayeeAddressStreet1)
+			</div>
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.PayeeAddressStreet2)
+				@Html.ValidationMessageFor(m => m.PayeeAddressStreet2)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.PayeeAddressCity)
+				@Html.ValidationMessageFor(m => m.PayeeAddressCity)
+			</div>
+			<div class="large-2 columns">
+				@Html.LabelDropDownFor(m => m.PayeeAddressStateId, Model.States)
+				@Html.ValidationMessageFor(m => m.PayeeAddressStateId)
+			</div>
+			<div class="large-1 columns end">
+				@Html.LabelTextBoxFor(m => m.PayeeAddressPostalCode, null, new { placeholder = "12345", maxlength = 5 })
+				@Html.ValidationMessageFor(m => m.PayeeAddressPostalCode)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns">
+				@Html.LabelTextBoxFor(m => m.CardNumber, false, null, new { placeholder = "1111222233334444", data_braintree_name = "number", maxlength = "19" })
+				@Html.ValidationMessageFor(m => m.CardNumber)
+			</div>
+			<div class="large-1 columns">
+				@Html.LabelTextBoxFor(m => m.CardCvv, false, null, new { placeholder = "123", data_braintree_name = "cvv", maxlength = "5" })
+				@Html.ValidationMessageFor(m => m.CardCvv)
+			</div>
+			<div class="large-1 columns">
+				@Html.LabelTextBoxFor(m => m.CardExpireMonth, false, null, new { placeholder = "MM", data_braintree_name = "expiration_month", maxlength = "2", min = 1, max = 12 })
+				@Html.ValidationMessageFor(m => m.CardExpireMonth)
+			</div>
+			<div class="large-1 columns end">
+				@Html.LabelTextBoxFor(m => m.CardExpireYear, false, null, new { placeholder = "YYYY", data_braintree_name = "expiration_year", maxlength = "4", min = DateTime.Now.Year })
+				@Html.ValidationMessageFor(m => m.CardExpireYear)
+			</div>
+		</div>
+	</div>
+
+	<div class="row" id="paypalrow" style="display:none">
+		<div class="large-12 columns">
+			@*<div id="paypal-button"></div>*@
+			<br />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.RecaptchaV2(@ViewData["recapPublicKey"].ToString())
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<input type="submit" value="Pay & Register Now" class="button" id="paymentButton">
+		</div>
+	</div>
+}

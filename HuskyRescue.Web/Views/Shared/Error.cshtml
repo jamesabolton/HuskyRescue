@@ -1,0 +1,28 @@
+﻿@model HandleErrorInfo
+
+@{
+	ViewBag.Title = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+@{
+	if (Request.IsLocal)
+	{
+		if (@Model != null && @Model.Exception != null)
+		{
+			<h3>Exception: </h3> @Model.Exception.Message
+			<h4>Stack Trace: </h4> @Model.Exception.StackTrace
+		}
+	}
+	else
+	{
+		if (String.IsNullOrEmpty(ViewBag.errorMessage))
+		{
+			<h2 class="text-danger">An error occurred while processing your request.</h2>
+		}
+		else
+		{
+			<h2 class="text-danger">@ViewBag.errorMessage</h2>
+		}
+	}
+}

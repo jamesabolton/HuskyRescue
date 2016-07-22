@@ -1,0 +1,5 @@
+﻿@{
+	var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+
+	Layout = controller.StartsWith("Admin", StringComparison.OrdinalIgnoreCase) ? "~/Views/Shared/_AdminLayout.cshtml" : "~/Views/Shared/_Layout.cshtml";
+}

@@ -1,0 +1,60 @@
+﻿@using HuskyRescue.ViewModel.Account
+@using HuskyRescue.Web.HtmlHelpers
+@model LoginViewModel
+
+@*@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}*@
+
+<div class="row">
+	<div class="small-6 small-centered columns">
+		<h2>Sign In</h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-9 medium-8 small-12 columns">
+		<section id="loginForm">
+			@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+			{
+				@Html.AntiForgeryToken()
+				<h4>Use a local account to sign in.</h4>
+				<hr />
+
+				<div class="row">
+					<div class="large-12 columns">
+						@Html.LabelTextBoxFor(m => m.Email)
+						@Html.ValidationMessageFor(m => m.Email)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						@Html.LabelPasswordFor(m => m.Password)
+						@Html.ValidationMessageFor(m => m.Password)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						@Html.LabelCheckboxFor(m => m.RememberMe)
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-2 medium-2 small-4 columns end">
+						<input type="submit" value="sign in" class="button" id="submitButton" />
+					</div>
+				</div>
+				<p>
+					@Html.ActionLink("Register as a new user", "Register")
+				</p>
+				<p>
+					@Html.ActionLink("Forgot your password?", "ForgotPassword")
+				</p>
+			}
+		</section>
+	</div>
+	<div class="large-3 medium-4 small-12 columns">
+		<section id="socialLoginForm">
+			@Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+		</section>
+	</div>
+</div>

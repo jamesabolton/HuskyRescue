@@ -1,0 +1,170 @@
+﻿@using HuskyRescue.Web.HtmlHelpers;
+@model HuskyRescue.ViewModel.Organization.Create
+
+<div class="row">
+	<div class="large-12 columns">
+		<h4>Create New Organization</h4>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-12 columns">
+
+		@using (Html.BeginForm("Create", "AdminOrganizations", FormMethod.Post, new { id = "newOrgForm" }))
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.Name)
+					@Html.ValidationMessageFor(m => m.Name)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.EmployeeIdNumber)
+					@Html.ValidationMessageFor(m => m.EmployeeIdNumber)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2">
+						<li>@Html.LabelCheckboxFor(m => m.IsBoardingPlace)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsAnimalClinic)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsGrantGiver)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsDonor)</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextAreaFor(m => m.Notes)
+					@Html.ValidationMessageFor(m => m.Notes)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-1 columns">
+					@Html.LabelDropDownFor(m => m.PhoneNumber1TypeId, Model.PhoneNumberTypes)
+					@Html.ValidationMessageFor(m => m.PhoneNumber1TypeId)
+				</div>
+				<div class="large-2 columns">
+					@Html.LabelTextBoxFor(m => m.PhoneNumber1)
+					@Html.ValidationMessageFor(m => m.PhoneNumber1)
+				</div>
+				<div class="large-1 columns">
+					@Html.LabelDropDownFor(m => m.PhoneNumber2TypeId, Model.PhoneNumberTypes)
+					@Html.ValidationMessageFor(m => m.PhoneNumber2TypeId)
+				</div>
+				<div class="large-2 columns">
+					@Html.LabelTextBoxFor(m => m.PhoneNumber2)
+					@Html.ValidationMessageFor(m => m.PhoneNumber2)
+				</div>
+				<div class="large-1 columns">
+					@Html.LabelDropDownFor(m => m.PhoneNumber3TypeId, Model.PhoneNumberTypes)
+					@Html.ValidationMessageFor(m => m.PhoneNumber3TypeId)
+				</div>
+				<div class="large-2 end columns">
+					@Html.LabelTextBoxFor(m => m.PhoneNumber3)
+					@Html.ValidationMessageFor(m => m.PhoneNumber3)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-1 columns">
+					@Html.LabelDropDownFor(m => m.Email1TypeId, Model.EmailTypes)
+					@Html.ValidationMessageFor(m => m.Email1TypeId)
+				</div>
+				<div class="large-5 columns">
+					@Html.LabelTextBoxFor(m => m.Email1)
+					@Html.ValidationMessageFor(m => m.Email1)
+				</div>
+				<div class="large-1 columns">
+					@Html.LabelDropDownFor(m => m.Email2TypeId, Model.EmailTypes)
+					@Html.ValidationMessageFor(m => m.Email2TypeId)
+				</div>
+				<div class="large-5 columns">
+					@Html.LabelTextBoxFor(m => m.Email2)
+					@Html.ValidationMessageFor(m => m.Email2)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.Website)
+					@Html.ValidationMessageFor(m => m.Website)
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="large-12 columns">
+					<h4>Physical Address</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.PhysicalAddressStreet1)
+					@Html.ValidationMessageFor(m => m.PhysicalAddressStreet1)
+				</div>
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.PhysicalAddressStreet2)
+					@Html.ValidationMessageFor(m => m.PhysicalAddressStreet2)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.PhysicalAddressCity)
+					@Html.ValidationMessageFor(m => m.PhysicalAddressCity)
+				</div>
+				<div class="large-2 columns">
+					@Html.LabelDropDownFor(m => m.PhysicalAddressStateId, Model.AddressStates)
+					@Html.ValidationMessageFor(m => m.PhysicalAddressStateId)
+				</div>
+				<div class="large-1 columns end">
+					@Html.LabelTextBoxFor(m => m.PhysicalAddressPostalCode, null, new { placeholder = "12345" })
+					@Html.ValidationMessageFor(m => m.PhysicalAddressPostalCode)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<h4>Mailing Address</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.MailingAddressStreet1)
+					@Html.ValidationMessageFor(m => m.MailingAddressStreet1)
+				</div>
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.MailingAddressStreet2)
+					@Html.ValidationMessageFor(m => m.MailingAddressStreet2)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.MailingAddressCity)
+					@Html.ValidationMessageFor(m => m.MailingAddressCity)
+				</div>
+				<div class="large-2 columns">
+					@Html.LabelDropDownFor(m => m.MailingAddressStateId, Model.AddressStates)
+					@Html.ValidationMessageFor(m => m.MailingAddressStateId)
+				</div>
+				<div class="large-1 columns end">
+					@Html.LabelTextBoxFor(m => m.MailingAddressPostalCode, null, new { placeholder = "12345" })
+					@Html.ValidationMessageFor(m => m.MailingAddressPostalCode)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<input type="submit" value="Create" class="button" />
+				</div>
+			</div>
+		}
+		<div class="row">
+			<div class="large-12 columns">
+				@Html.ActionLink("Back to List", "Index")
+			</div>
+		</div>
+	</div>
+</div>

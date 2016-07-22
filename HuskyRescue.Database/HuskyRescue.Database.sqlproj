@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>HuskyRescue.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1d70fffe-1a4a-4ca8-8eff-e376e928c1b2}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>HuskyRescue.Database</RootNamespace>
+    <AssemblyName>HuskyRescue.Database</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Person.sql" />
+    <Build Include="dbo\Tables\SystemErrorLog.sql" />
+    <Build Include="dbo\Tables\AddressType.sql" />
+    <Build Include="dbo\Tables\EmailAddressType.sql" />
+    <Build Include="dbo\Tables\SystemAuditLogEntityType.sql" />
+    <Build Include="dbo\Tables\SystemAuditLog.sql" />
+    <Build Include="dbo\Tables\Event.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AnimalBreed.sql" />
+    <Build Include="dbo\Tables\AnimalColor.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\MicrochipManufacturer.sql" />
+    <Build Include="dbo\Tables\AnimalIntakeType.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AnimalPlacementType.sql" />
+    <Build Include="dbo\Tables\InventoryPlacements.sql" />
+    <Build Include="dbo\Tables\AnimalSize.sql" />
+    <Build Include="dbo\Tables\Animal.sql" />
+    <Build Include="dbo\Tables\ApplicantType.sql" />
+    <Build Include="dbo\Tables\Organization.sql" />
+    <Build Include="dbo\Tables\PaymentEventRegistration.sql" />
+    <Build Include="dbo\Tables\AddressState.sql" />
+    <Build Include="dbo\Tables\PersonAddresses.sql" />
+    <Build Include="dbo\Tables\EventRegistration.sql" />
+    <Build Include="dbo\Tables\Website.sql" />
+    <Build Include="dbo\Tables\OrganizationAddresses.sql" />
+    <Build Include="dbo\Tables\PersonPhoneNumbers.sql" />
+    <Build Include="dbo\Tables\EventSponsor.sql" />
+    <Build Include="dbo\Tables\OrganizationPhoneNumbers.sql" />
+    <Build Include="dbo\Tables\Applicant.sql" />
+    <Build Include="dbo\Tables\ApplicantResidenceOwnershipType.sql" />
+    <Build Include="dbo\Tables\PersonEmailAddresses.sql" />
+    <Build Include="dbo\Tables\ApplicantResidenceType.sql" />
+    <Build Include="dbo\Tables\EventSponsorshipLevel.sql" />
+    <Build Include="dbo\Tables\OrganizationEmailAddresses.sql" />
+    <Build Include="dbo\Tables\ApplicantResidencePetDepositCoverageType.sql" />
+    <Build Include="dbo\Tables\MarketingPreferences.sql" />
+    <Build Include="dbo\Tables\ApplicantStudentType.sql" />
+    <Build Include="dbo\Tables\EventDonation.sql" />
+    <Build Include="dbo\Tables\PhoneNumber.sql" />
+    <Build Include="dbo\Tables\PersonMarketingPreferences.sql" />
+    <Build Include="dbo\Tables\OrganizationMarketingPreferences.sql" />
+    <Build Include="dbo\Tables\PhoneNumberType.sql" />
+    <Build Include="dbo\Tables\EmailAddress.sql" />
+    <Build Include="dbo\Tables\EventRegistrationPerson.sql" />
+    <Build Include="dbo\Tables\ApplicantVeterinarian.sql" />
+    <Build Include="dbo\Tables\OrganizationContacts.sql" />
+    <Build Include="dbo\Tables\ApplicantOwnedAnimals.sql" />
+    <Build Include="dbo\Tables\InventoryCategory.sql" />
+    <Build Include="dbo\Tables\PersonWebsites.sql" />
+    <Build Include="dbo\Tables\InventoryImage.sql" />
+    <Build Include="dbo\Tables\OrganizationWebsites.sql" />
+    <Build Include="dbo\Tables\AspNetResources.sql" />
+    <Build Include="dbo\Tables\Address.sql" />
+    <Build Include="dbo\Tables\Inventory.sql" />
+    <Build Include="dbo\Tables\AspNetRoleResources.sql" />
+    <Build Include="dbo\Tables\SystemSetting.sql" />
+    <Build Include="dbo\Tables\AnimalPlacement.sql" />
+    <Build Include="dbo\Tables\PaymentDonation.sql" />
+    <Build Include="dbo\Tables\StoreShippingMethod.sql" />
+    <Build Include="dbo\Tables\StoreCart.sql" />
+    <Build Include="dbo\Tables\StoreOrder.sql" />
+    <Build Include="dbo\Tables\StoreCartItem.sql" />
+    <Build Include="dbo\Tables\StoreOrderDetail.sql" />
+    <Build Include="dbo\Tables\EventSponsorship.sql" />
+    <Build Include="dbo\Tables\PaymentStore.sql" />
+    <Build Include="dbo\Tables\Payment.sql" />
+    <Build Include="dbo\Tables\FileType.sql" />
+    <Build Include="dbo\Tables\File.sql" />
+    <Build Include="dbo\Tables\EventSponsorshipItem_1.sql" />
+    <Build Include="dbo\Tables\EventSponsorLogo.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PopulateTypeTables-001.sql" />
+    <None Include="PopulateSystemTables-001.sql" />
+    <None Include="PopulateAspTables-001.sql" />
+  </ItemGroup>
+</Project>

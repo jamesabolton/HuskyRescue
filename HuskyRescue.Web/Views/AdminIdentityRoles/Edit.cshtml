@@ -1,0 +1,42 @@
+﻿@using HuskyRescue.Web.HtmlHelpers
+@model HuskyRescue.ViewModel.Admin.Roles.Edit
+
+<div class="row">
+	<div class="large-12 columns">
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+			@Html.HiddenFor(model => model.Id)
+
+			<div class="row">
+				<div class="large-6 small-12 small-centered large-centered columns"><h2>Edit User Role</h2></div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.Name, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.Name)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-1">
+						@foreach (var cbox in Model.Resources)
+						{
+							<li>@Html.LabelCheckboxFor(m => m.Resources.Single(r => r.Id.Equals(cbox.Id) && r.Name.Equals(cbox.Name)).Selected, cbox.Name + " with access " + cbox.OperationDesc, string.Join("|", cbox.Id, cbox.Operations))</li>
+						}
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<input type="submit" value="Save" class="button small success" />
+				</div>
+			</div>
+		}
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		@Html.ActionLink("Back to List", "Index")
+	</div>
+</div>

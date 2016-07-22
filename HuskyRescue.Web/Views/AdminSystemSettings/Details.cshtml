@@ -1,0 +1,69 @@
+﻿@model HuskyRescue.ViewModel.SystemSetting.Detail
+
+@{
+	ViewBag.Title = "Details";
+}
+<div class="row">
+	<div class="large-6 small-12 small-centered large-centered columns"><h2>System Setting Details</h2></div>
+</div>
+<div class="row">
+	<div class="large-2 columns">
+		@Html.DisplayNameFor(model => model.Name)
+	</div>
+	<div class="large-10 columns">
+		@Html.DisplayFor(model => model.Name)
+	</div>
+</div>
+<div class="row">
+	<div class="large-2 columns">
+		@Html.DisplayNameFor(model => model.Value)
+	</div>
+	<div class="large-10 columns">
+		@Html.DisplayFor(model => model.Value)
+	</div>
+</div>
+<div class="row">
+	<div class="large-2 columns">
+		@Html.DisplayNameFor(model => model.Notes)
+	</div>
+	<div class="large-10 columns">
+		@Html.DisplayFor(model => model.Notes)
+	</div>
+</div>
+<div class="row">
+	<div class="large-2 columns">
+		@Html.DisplayNameFor(model => model.AddedOnDate)
+	</div>
+	<div class="large-10 columns">
+		@Html.DisplayFor(model => model.AddedOnDate)
+	</div>
+</div>
+<div class="row">
+	<div class="large-2 columns">
+		@Html.DisplayNameFor(model => model.AddedByUserId)
+	</div>
+	<div class="large-10 columns">
+		@Html.DisplayFor(model => model.AddedByUserId)
+	</div>
+</div>
+<div class="row">
+	<div class="large-2 columns">
+		@Html.DisplayNameFor(model => model.UpdatedByUserId)
+	</div>
+	<div class="large-10 columns">
+		@Html.DisplayFor(model => model.UpdatedByUserId)
+	</div>
+</div>
+<div class="row">
+	<div class="large-2 columns">
+		@Html.DisplayNameFor(model => model.UpdatedOnDate)
+	</div>
+	<div class="large-10 columns">
+		@Html.DisplayFor(model => model.UpdatedOnDate)
+	</div>
+</div>
+
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Name }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>

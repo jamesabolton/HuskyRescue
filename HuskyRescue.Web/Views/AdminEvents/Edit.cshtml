@@ -1,0 +1,136 @@
+﻿@using HuskyRescue.Web.HtmlHelpers;
+@model HuskyRescue.ViewModel.Events.Edit
+
+@section scripts {
+	<script type="text/javascript">
+		//$('#EventDate').val('');
+		$('#EventDate').datetimepicker({
+			timepicker: false,
+			format: 'm/d/Y',
+			//mask: true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
+		});
+		$('#StartTime').datetimepicker({
+			datepicker: false,
+			format: 'H:i'
+		});
+		$('#EndTime').datetimepicker({
+			datepicker: false,
+			format: 'H:i'
+		});
+	</script>
+}
+
+
+<div class="row">
+	<div class="large-12 columns">
+		<h4>Edit Event</h4>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-12 columns">
+
+		@using (Html.BeginForm("Edit", "AdminEvents", FormMethod.Post, new { id = "editEventForm" }))
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+
+			@Html.HiddenFor(m => m.Id)
+			@Html.HiddenFor(m => m.AddedByUserId)
+			
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelCheckboxFor(m => m.IsActive)
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextBoxFor(m => m.EventName)
+					@Html.ValidationMessageFor(m => m.EventName)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextAreaFor(m => m.InternalNotes)
+					@Html.ValidationMessageFor(m => m.InternalNotes)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextAreaFor(m => m.PublicEventDescription)
+					@Html.ValidationMessageFor(m => m.PublicEventDescription)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelDropDownFor(m => m.OrganizationId, Model.Organizations)
+					@Html.ValidationMessageFor(m => m.OrganizationId)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<ul class="small-block-grid-2 medium-block-grid-6 large-block-grid-9">
+						<li>@Html.LabelCheckboxFor(m => m.IsAllDayEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsRoughRidersEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsGolfTournamentEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsDogWashEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsMeetAndGreetEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsRaffleEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.Is5KEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.IsOtherEvent)</li>
+						<li>@Html.LabelCheckboxFor(m => m.AreTicketsSold)</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelTextAreaFor(m => m.EventDescription)
+					@Html.ValidationMessageFor(m => m.EventDescription)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-3 columns">
+					@Html.LabelTextBoxFor(m => m.EventDate)
+					@Html.ValidationMessageFor(m => m.EventDate)
+				</div>
+				<div class="large-3 columns">
+					@Html.LabelTextBoxFor(m => m.StartTime)
+					@Html.ValidationMessageFor(m => m.StartTime)
+				</div>
+				<div class="large-3 end columns">
+					@Html.LabelTextBoxFor(m => m.EndTime)
+					@Html.ValidationMessageFor(m => m.EndTime)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-3 columns">
+					@Html.LabelTextBoxFor(m => m.TicketPrice)
+					@Html.ValidationMessageFor(m => m.TicketPrice)
+				</div>
+				<div class="large-3 columns end">
+					@Html.LabelTextBoxFor(m => m.TicketPriceOther)
+					@Html.ValidationMessageFor(m => m.TicketPriceOther)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<input type="submit" value="Update" class="button" />
+				</div>
+			</div>
+		}
+		<div class="row">
+			<div class="large-12 columns">
+				@Html.ActionLink("Back to List", "Index")
+			</div>
+		</div>
+	</div>
+</div>

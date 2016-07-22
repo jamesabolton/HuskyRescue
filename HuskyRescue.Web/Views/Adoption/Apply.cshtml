@@ -1,0 +1,770 @@
+﻿@using HuskyRescue.Web.HtmlHelpers;
+@model HuskyRescue.ViewModel.Adoption.Apply
+
+@section scripts {
+	@Scripts.Render("~/bundles/Adoption-Apply")
+}
+
+<div class="row">
+	<div class="small-9 small-centered columns">
+		<h2>Adoption Application</h2>
+	</div>
+</div>
+
+@using (Html.BeginForm("Apply", "Adoption", FormMethod.Post, new { id = "applyForm" }))
+{
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary(true)
+	<div class="row">
+		<div class="large-6 medium-6 small-12 columns">
+			<div class="row">
+				<div class="large-6 medium-6 small-12 columns">
+					@Html.LabelTextBoxFor(m => m.AppNameFirst, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.AppNameFirst)
+				</div>
+				<div class="large-6 medium-6 small-12 columns">
+					@Html.LabelTextBoxFor(m => m.AppNameLast, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.AppNameLast)
+				</div>
+			</div>
+		</div>
+		<div class="large-6 medium-6 small-12 columns">
+			<div class="row">
+				<div class="large-6 medium-6 small-12 columns">
+					@Html.LabelTextBoxFor(m => m.AppSpouseNameFirst)
+					@Html.ValidationMessageFor(m => m.AppSpouseNameFirst)
+				</div>
+				<div class="large-6 medium-6 small-12 columns">
+					@Html.LabelTextBoxFor(m => m.AppSpouseNameLast)
+					@Html.ValidationMessageFor(m => m.AppSpouseNameLast)
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 medium-5 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.AppAddressStreet1, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AppAddressStreet1)
+		</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.AppAddressCity, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AppAddressCity)
+		</div>
+		<div class="large-2 medium-2 small-6 columns">
+			@Html.LabelDropDownFor(m => m.AppAddressStateId, Model.AppAddressStateList, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AppAddressStateId)
+		</div>
+		<div class="large-1 medium-2 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.AppAddressZip, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AppAddressZip)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.AppHomePhone)
+			@Html.ValidationMessageFor(m => m.AppHomePhone)
+		</div>
+		<div class="large-3 medium-3 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.AppCellPhone)
+			@Html.ValidationMessageFor(m => m.AppCellPhone)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 medium-5 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.AppEmail, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AppEmail)
+		</div>
+		<div class="large-4 medium-5 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.AppEmployer)
+			@Html.ValidationMessageFor(m => m.AppEmployer)
+		</div>
+		<div class="large-2 medium-2 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.AppDateBirth, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AppDateBirth)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-4 medium-4 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAllAdultsAgreedOnAdoption, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+			@Html.ValidationMessageFor(m => m.IsAllAdultsAgreedOnAdoption)
+		</div>
+		<div class="large-8 medium-8 small-12 columns">
+			<div id="IsAllAdultsAgreedOnAdoptionReason_div">
+				@Html.LabelTextAreaFor(m => m.IsAllAdultsAgreedOnAdoptionReason, 2, 20, new { placeholder = "required" })
+				@Html.ValidationMessageFor(m => m.IsAllAdultsAgreedOnAdoptionReason)
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-2 medium-2 small-6 columns">
+			@Html.LabelDropDownFor(m => m.ResidenceTypeId, Model.ResidenceTypeList)
+			@Html.ValidationMessageFor(m => m.ResidenceTypeId)
+		</div>
+		<div class="large-2 medium-2 small-6 columns">
+			@Html.LabelDropDownFor(m => m.ResidenceOwnershipId, Model.ResidenceOwnershipList)
+			@Html.ValidationMessageFor(m => m.ResidenceOwnershipId)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			<div class="ResidenceRent">
+				@Html.LabelRadioButtonFor(m => m.ResidenceIsPetAllowed, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+				@Html.ValidationMessageFor(m => m.ResidenceIsPetAllowed)
+			</div>
+		</div>
+		<div class="large-3 medium-3 small-6 columns end">
+			<div class="ResidenceRent">
+				@Html.LabelRadioButtonFor(m => m.ResidencePetSizeWeightLimit, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+				@Html.ValidationMessageFor(m => m.ResidencePetSizeWeightLimit)
+			</div>
+		</div>
+	</div>
+
+	<div class="ResidenceRent">
+		<div class="row">
+			<div class="large-2 medium-2 small-6 columns">
+				@Html.LabelRadioButtonFor(m => m.ResidenceIsPetDepositRequired, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+				@Html.ValidationMessageFor(m => m.ResidenceIsPetDepositRequired)
+			</div>
+			<div class="large-2 medium-2 small-6 columns">
+				@Html.LabelTextBoxFor(m => m.ResidencePetDepositAmount, new { @class = "ResidencePetDeposit" }, new { placeholder = "required", @class = "ResidencePetDeposit" })
+				@Html.ValidationMessageFor(m => m.ResidencePetDepositAmount)
+			</div>
+			<div class="large-3 medium-3 small-6 columns">
+				@Html.LabelRadioButtonFor(m => m.ResidenceIsPetDepositPaid, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "ResidencePetDeposit" }, new { @class = "ResidencePetDeposit" })
+				@Html.ValidationMessageFor(m => m.ResidenceIsPetDepositPaid)
+			</div>
+			<div class="large-2 medium-2 small-6 columns end">
+				@Html.LabelDropDownFor(m => m.ResidencePetDepositCoverageId, Model.ResidencePetDepositCoverageList, new { @class = "ResidencePetDeposit" }, new { @class = "ResidencePetDeposit" })
+				@Html.ValidationMessageFor(m => m.ResidencePetDepositCoverageId)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-9 medium-9 small-12 columns">
+				@Html.LabelTextBoxFor(m => m.ResidenceLandlordName, null, new { placeholder = "required" })
+				@Html.ValidationMessageFor(m => m.ResidenceLandlordName)
+			</div>
+			<div class="large-3 medium-3 small-12 columns">
+				@Html.LabelTextBoxFor(m => m.ResidenceLandlordNumber, null, new { placeholder = "required" })
+				@Html.ValidationMessageFor(m => m.ResidenceLandlordNumber)
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-4 medium-4 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.ResidenceLengthOfResidence, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.ResidenceLengthOfResidence)
+		</div>
+		<div class="large-8 medium-8 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.WhatIfMovingPetPlacement, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.WhatIfMovingPetPlacement)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.ResidenceIsYardFenced, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+			@Html.ValidationMessageFor(m => m.ResidenceIsYardFenced)
+		</div>
+		<div class="large-4 medium-4 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.ResidenceFenceType, new { @class = "ResidenceFence" }, new { placeholder = "required", @class = "ResidenceFence" })
+			@Html.ValidationMessageFor(m => m.ResidenceFenceType)
+		</div>
+		<div class="large-4 medium-4 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.ResidenceFenceHeight, new { @class = "ResidenceFence" }, new { placeholder = "required", @class = "ResidenceFence" })
+			@Html.ValidationMessageFor(m => m.ResidenceFenceHeight)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAppOrSpouseStudent, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+			@Html.ValidationMessageFor(m => m.IsAppOrSpouseStudent)
+		</div>
+		<div class="large-2 medium-2 small-6 columns end">
+			@Html.LabelDropDownFor(m => m.StudentTypeId, Model.StudentTypeList, new { @class = "StudentType" }, new { @class = "StudentType" })
+			@Html.ValidationMessageFor(m => m.StudentTypeId)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAppTravelFrequent, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+			@Html.ValidationMessageFor(m => m.IsAppTravelFrequent)
+		</div>
+		<div class="large-9 medium-9 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.AppTravelFrequency, new { @class = "TravelFrequent" }, new { placeholder = "required", @class = "TravelFrequent" })
+			@Html.ValidationMessageFor(m => m.AppTravelFrequency)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 medium-12 small-12 columns">
+			@Html.LabelTextAreaFor(m => m.WhatIfTravelPetPlacement, 2, 20, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.WhatIfTravelPetPlacement)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-4 medium-4 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.ResidenceNumberOccupants, null, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.ResidenceNumberOccupants)
+		</div>
+		<div class="large-8 medium-8 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.ResidenceAgesOfChildren)
+			@Html.ValidationMessageFor(m => m.ResidenceAgesOfChildren)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-4 medium-4 small-12 columns">
+			@Html.LabelFor(m => m.PetKeptLocationInOutDoors)
+			<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2">
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationInOutDoorsTotallyInside)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationInOutDoorsMostlyInside)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationInOutDoorsTotallyOutside)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationInOutDoorMostlyOutsides)</li>
+			</ul>
+		</div>
+		<div class="large-8 medium-8 small-12 columns">
+			@Html.LabelTextAreaFor(m => m.PetKeptLocationInOutDoorsExplain)
+			@Html.ValidationMessageFor(m => m.PetKeptLocationInOutDoorsExplain)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 medium-12 small-12 columns">
+			<label>How long will this pet be left home alone during the day?</label>
+			<div class="row">
+				<div class="large-2 medium-2 small-6 columns">
+					@Html.LabelTextBoxFor(m => m.PetLeftAloneDays, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.PetLeftAloneDays)
+				</div>
+				<div class="large-2 medium-2 small-6 columns end">
+					@Html.LabelTextBoxFor(m => m.PetLeftAloneHours, null, new { placeholder = "required" })
+					@Html.ValidationMessageFor(m => m.PetLeftAloneHours)
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelFor(m => m.PetKeptLocationAloneRestriction)
+			<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionLooseIndoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionGarage)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionOutsideKennel)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionCratedIndoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionCratedOutdoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionLooseInBackyard)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionTiedUpOutdoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionBasement)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationAloneRestrictionOther)</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(m => m.PetKeptLocationAloneRestrictionExplain, 2, 20, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.PetKeptLocationAloneRestrictionExplain)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelFor(m => m.PetKeptLocationSleepingRestriction)
+			<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionLooseIndoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionGarage)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionOutsideKennel)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionCratedIndoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionCratedOutdoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionLooseInBackyard)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionTiedUpOutdoors)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionBasement)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionInBedOwner)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetKeptLocationSleepingRestrictionOther)</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(m => m.PetKeptLocationSleepingRestrictionExplain, 2, 20, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.PetKeptLocationSleepingRestrictionExplain)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelFor(m => m.PetAdoptionReason)
+			<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonHousePet)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonGuardDog)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonWatchDog)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonGift)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonCompanionChild)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonCompanionPet)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonJoggingPartner)</li>
+				<li>@Html.LabelCheckboxFor(m => m.IsPetAdoptionReasonOther)</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(m => m.PetAdoptionReasonExplain, 2, 20, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.PetAdoptionReasonExplain)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 medium-6 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.FilterAppIsAwareHuskyAttributes, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+			@Html.ValidationMessageFor(m => m.FilterAppIsAwareHuskyAttributes)
+		</div>
+		<div class="large-6 medium-6 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.FilterAppHasOwnedHuskyBefore, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+			@Html.ValidationMessageFor(m => m.FilterAppHasOwnedHuskyBefore)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(m => m.FilterAppTraitsDesired, 2, 20, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.FilterAppTraitsDesired)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelRadioButtonFor(m => m.FilterAppIsCatOwner, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) })
+			@Html.ValidationMessageFor(m => m.FilterAppIsCatOwner)
+		</div>
+		<div class="large-3 medium-3 small-6 columns end">
+			@Html.LabelTextBoxFor(m => m.FilterAppCatsOwnedCount, new { @class = "CatOwner" }, new { placeholder = "required", @class = "CatOwner" })
+			@Html.ValidationMessageFor(m => m.FilterAppCatsOwnedCount)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			@Html.LabelTextAreaFor(m => m.FilterAppDogsInterestedIn, 2, 20, new { placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.FilterAppDogsInterestedIn)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns text-center">
+			<h3 class="subheader">Veterinarian Information</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-3 medium-12 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.NameDr)
+			@Html.ValidationMessageFor(m => m.NameDr)
+		</div>
+		<div class="large-3 medium-12 small-12 columns">
+			@Html.LabelTextBoxFor(m => m.NameOffice)
+			@Html.ValidationMessageFor(m => m.NameOffice)
+		</div>
+		<div class="large-3 medium-12 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.PhoneNumber)
+			@Html.ValidationMessageFor(m => m.PhoneNumber)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns text-center">
+			<h3 class="subheader">Current & Previously Owned Pets</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-10 small-centered columns">
+			<h5 class="subheader">Please list every animal (dogs, cats, etc.) you have owned in the last 5 years.</h5>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h6 class="subheader">First Pet</h6>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Name1)
+			@Html.ValidationMessageFor(m => m.Name1)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Breed1, new { @class = "Pet1" }, new { @class = "Pet1", placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.Breed1)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelDropDownFor(m => m.Gender1, Model.GenderList, new { @class = "Pet1" }, new { @class = "Pet1", placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.Gender1)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.AgeMonths1, new { @class = "Pet1" }, new { @class = "Pet1", placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AgeMonths1)
+		</div>
+	</div>
+	<div class="row Pet1">
+		<div class="large-4 medium-4 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.OwnershipLengthMonths1, new { @class = "Pet1" }, new { @class = "Pet1", placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.OwnershipLengthMonths1)
+		</div>
+	</div>
+	<div class="row Pet1">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAltered1, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet1" }, new { @class = "Pet1" })
+			@Html.ValidationMessageFor(m => m.IsAltered1)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.AlteredReason1, new { @class = "Pet1Alter" }, new { @class = "Pet1Alter", placeholder = "required" })
+			@Html.ValidationMessageFor(m => m.AlteredReason1)
+		</div>
+	</div>
+	<div class="row Pet1">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsHwPrevention1, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet1" }, new { @class = "Pet1" })
+			@Html.ValidationMessageFor(m => m.IsHwPrevention1)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.HwPreventionReason1, new { @class = "Pet1HW" }, new { @class = "Pet1HW" })
+			@Html.ValidationMessageFor(m => m.HwPreventionReason1)
+		</div>
+	</div>
+	<div class="row Pet1">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsFullyVaccinated1, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet1" }, new { @class = "Pet1" })
+			@Html.ValidationMessageFor(m => m.IsFullyVaccinated1)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.FullyVaccinatedReason1, new { @class = "Pet1Vacc" }, new { @class = "Pet1Vacc" })
+			@Html.ValidationMessageFor(m => m.FullyVaccinatedReason1)
+		</div>
+	</div>
+	<div class="row Pet1">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsStillOwned1, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet1" }, new { @class = "Pet1" })
+			@Html.ValidationMessageFor(m => m.IsStillOwned1)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.IsStillOwnedReason1, new { @class = "Pet1StillOwned" }, new { @class = "Pet1StillOwned" })
+			@Html.ValidationMessageFor(m => m.IsStillOwnedReason1)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h6 class="subheader">Second Pet</h6>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Name2)
+			@Html.ValidationMessageFor(m => m.Name2)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Breed2, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.Breed2)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelDropDownFor(m => m.Gender2, Model.GenderList, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.Gender2)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.AgeMonths2, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.AgeMonths2)
+		</div>
+	</div>
+	<div class="row Pet2">
+		<div class="large-4 medium-4 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.OwnershipLengthMonths2, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.OwnershipLengthMonths2)
+		</div>
+	</div>
+	<div class="row Pet2">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAltered2, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.IsAltered2)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.AlteredReason2, new { @class = "Pet2Alter" }, new { @class = "Pet2Alter" })
+			@Html.ValidationMessageFor(m => m.AlteredReason2)
+		</div>
+	</div>
+	<div class="row Pet2">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsHwPrevention2, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.IsHwPrevention2)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.HwPreventionReason2, new { @class = "Pet2HW" }, new { @class = "Pet2HW" })
+			@Html.ValidationMessageFor(m => m.HwPreventionReason2)
+		</div>
+	</div>
+	<div class="row Pet2">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsFullyVaccinated2, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.IsFullyVaccinated2)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.FullyVaccinatedReason2, new { @class = "Pet2Vacc" }, new { @class = "Pet2Vacc" })
+			@Html.ValidationMessageFor(m => m.FullyVaccinatedReason2)
+		</div>
+	</div>
+	<div class="row Pet2">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsStillOwned2, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet2" }, new { @class = "Pet2" })
+			@Html.ValidationMessageFor(m => m.IsStillOwned2)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.IsStillOwnedReason2, new { @class = "Pet2StillOwned" }, new { @class = "Pet2StillOwned" })
+			@Html.ValidationMessageFor(m => m.IsStillOwnedReason2)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h6 class="subheader">Third Pet</h6>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Name3)
+			@Html.ValidationMessageFor(m => m.Name3)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Breed3, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.Breed3)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelDropDownFor(m => m.Gender3, Model.GenderList, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.Gender3)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.AgeMonths3, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.AgeMonths3)
+		</div>
+	</div>
+	<div class="row Pet3">
+		<div class="large-4 medium-4 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.OwnershipLengthMonths3, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.OwnershipLengthMonths3)
+		</div>
+	</div>
+	<div class="row Pet3">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAltered3, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.IsAltered3)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.AlteredReason3, new { @class = "Pet3Alter" }, new { @class = "Pet3Alter" })
+			@Html.ValidationMessageFor(m => m.AlteredReason3)
+		</div>
+	</div>
+	<div class="row Pet3">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsHwPrevention3, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.IsHwPrevention3)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.HwPreventionReason3, new { @class = "Pet3HW" }, new { @class = "Pet3HW" })
+			@Html.ValidationMessageFor(m => m.HwPreventionReason3)
+		</div>
+	</div>
+	<div class="row Pet3">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsFullyVaccinated3, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.IsFullyVaccinated3)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.FullyVaccinatedReason3, new { @class = "Pet3Vacc" }, new { @class = "Pet3Vacc" })
+			@Html.ValidationMessageFor(m => m.FullyVaccinatedReason3)
+		</div>
+	</div>
+	<div class="row Pet3">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsStillOwned3, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet3" }, new { @class = "Pet3" })
+			@Html.ValidationMessageFor(m => m.IsStillOwned3)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.IsStillOwnedReason3, new { @class = "Pet3StillOwned" }, new { @class = "Pet3StillOwned" })
+			@Html.ValidationMessageFor(m => m.IsStillOwnedReason3)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h6 class="subheader">Fourth Pet</h6>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Name4)
+			@Html.ValidationMessageFor(m => m.Name4)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Breed4, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.Breed4)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelDropDownFor(m => m.Gender4, Model.GenderList, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.Gender4)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.AgeMonths4, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.AgeMonths4)
+		</div>
+	</div>
+	<div class="row Pet4">
+		<div class="large-4 medium-4 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.OwnershipLengthMonths4, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.OwnershipLengthMonths4)
+		</div>
+	</div>
+	<div class="row Pet4">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAltered4, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.IsAltered4)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.AlteredReason4, new { @class = "Pet4Alter" }, new { @class = "Pet4Alter" })
+			@Html.ValidationMessageFor(m => m.AlteredReason4)
+		</div>
+	</div>
+	<div class="row Pet4">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsHwPrevention4, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.IsHwPrevention4)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.HwPreventionReason4, new { @class = "Pet4HW" }, new { @class = "Pet4HW" })
+			@Html.ValidationMessageFor(m => m.HwPreventionReason4)
+		</div>
+	</div>
+	<div class="row Pet4">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsFullyVaccinated4, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.IsFullyVaccinated4)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.FullyVaccinatedReason4, new { @class = "Pet4Vacc" }, new { @class = "Pet4Vacc" })
+			@Html.ValidationMessageFor(m => m.FullyVaccinatedReason4)
+		</div>
+	</div>
+	<div class="row Pet4">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsStillOwned4, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet4" }, new { @class = "Pet4" })
+			@Html.ValidationMessageFor(m => m.IsStillOwned4)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.IsStillOwnedReason4, new { @class = "Pet4StillOwned" }, new { @class = "Pet4StillOwned" })
+			@Html.ValidationMessageFor(m => m.IsStillOwnedReason4)
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h6 class="subheader">Fifth Pet</h6>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Name5)
+			@Html.ValidationMessageFor(m => m.Name5)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.Breed5, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.Breed5)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelDropDownFor(m => m.Gender5, Model.GenderList, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.Gender5)
+		</div>
+		<div class="large-3 medium-3 small-6 columns">
+			@Html.LabelTextBoxFor(m => m.AgeMonths5, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.AgeMonths5)
+		</div>
+	</div>
+	<div class="row Pet5">
+		<div class="large-4 medium-4 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.OwnershipLengthMonths5, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.OwnershipLengthMonths5)
+		</div>
+	</div>
+	<div class="row Pet5">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsAltered5, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.IsAltered5)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.AlteredReason5, new { @class = "Pet5Alter" }, new { @class = "Pet5Alter" })
+			@Html.ValidationMessageFor(m => m.AlteredReason5)
+		</div>
+	</div>
+	<div class="row Pet5">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsHwPrevention5, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.IsHwPrevention5)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.HwPreventionReason5, new { @class = "Pet5HW" }, new { @class = "Pet5HW" })
+			@Html.ValidationMessageFor(m => m.HwPreventionReason5)
+		</div>
+	</div>
+	<div class="row Pet5">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsFullyVaccinated5, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.IsFullyVaccinated5)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.FullyVaccinatedReason5, new { @class = "Pet5Vacc" }, new { @class = "Pet5Vacc" })
+			@Html.ValidationMessageFor(m => m.FullyVaccinatedReason5)
+		</div>
+	</div>
+	<div class="row Pet5">
+		<div class="large-1 medium-1 show-for-medium-up columns">&nbsp;</div>
+		<div class="large-3 medium-3 small-12 columns">
+			@Html.LabelRadioButtonFor(m => m.IsStillOwned5, new List<KeyValuePair<string, object>> { new KeyValuePair<string, object>("Yes", true), new KeyValuePair<string, object>("No", false) }, new { @class = "Pet5" }, new { @class = "Pet5" })
+			@Html.ValidationMessageFor(m => m.IsStillOwned5)
+		</div>
+		<div class="large-8 medium-8 small-12 columns end">
+			@Html.LabelTextBoxFor(m => m.IsStillOwnedReason5, new { @class = "Pet5StillOwned" }, new { @class = "Pet5StillOwned" })
+			@Html.ValidationMessageFor(m => m.IsStillOwnedReason5)
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="large-2 medium-2 small-4 columns end">
+			<input type="submit" value="Submit" class="button" id="submitButton" />
+		</div>
+	</div>
+}

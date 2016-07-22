@@ -1,0 +1,242 @@
+﻿@using HuskyRescue.Web.HtmlHelpers;
+@using GoogleRecaptchaMvc;
+@model HuskyRescue.ViewModel.RoughRiders.Register.CreatePublic
+
+
+@section scripts {
+	<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+	<script src="https://js.braintreegateway.com/v1/braintree-data.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+	@Scripts.Render("~/bundles/RoughRiders-Register")
+}
+
+<div class="row">
+	<div class="large-12 columns">
+		<img src="~/Content/Images/Controllers/Events/RoughRiders/2015 RoughRiders Flyer_S.jpg" />
+	</div>
+</div>
+
+@if (!(bool)ViewData["isActiveEvent"])
+{
+	<div class="row">
+		<div class="large-12 columns">
+			<p>
+				A big thank you to everyone who attended this years game! Money raised form this event will go to help Texas Husky Rescue save more huskies this year than ever before.
+			</p>
+		</div>
+	</div>
+}
+else
+{
+	using (Html.BeginForm("Index", "RoughRiders", FormMethod.Post, new { id = "roughRidersRegisterForm", autocomplete = "off" }))
+	{
+		@Html.AntiForgeryToken()
+		@Html.HiddenFor(m => m.GameTicketCost)
+		<input type="hidden" id="clientToken" value="@ViewData["clientToken"]" />
+		<input type="hidden" id="merchantId" value="@ViewData["merchantId"]" />
+		<input type="hidden" id="environment" value="@ViewData["environment"]" />
+
+		<div class="row">
+			<div class="large-12 columns">
+				@Html.ValidationSummary(true)
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-12 columns">
+				<h4>Attendee Contact Information</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeFirstName)
+				@Html.ValidationMessageFor(m => m.AttendeeFirstName)
+			</div>
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeLastName)
+				@Html.ValidationMessageFor(m => m.AttendeeLastName)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeAddressStreet1)
+				@Html.ValidationMessageFor(m => m.AttendeeAddressStreet1)
+			</div>
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeAddressStreet2)
+				@Html.ValidationMessageFor(m => m.AttendeeAddressStreet2)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeAddressCity)
+				@Html.ValidationMessageFor(m => m.AttendeeAddressCity)
+			</div>
+			<div class="large-2 columns">
+				@Html.LabelDropDownFor(m => m.AttendeeAddressStateId, Model.States)
+				@Html.ValidationMessageFor(m => m.AttendeeAddressStateId)
+			</div>
+			<div class="large-1 columns end">
+				@Html.LabelTextBoxFor(m => m.AttendeeAddressPostalCode, null, new { placeholder = "12345" })
+				@Html.ValidationMessageFor(m => m.AttendeeAddressPostalCode)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeHomePhoneNumber)
+				@Html.ValidationMessageFor(m => m.AttendeeHomePhoneNumber)
+			</div>
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeMobilePhoneNumber)
+				@Html.ValidationMessageFor(m => m.AttendeeMobilePhoneNumber)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 end columns">
+				@Html.LabelTextBoxFor(m => m.AttendeeEmailAddress)
+				@Html.ValidationMessageFor(m => m.AttendeeEmailAddress)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-2 end columns">
+				<div class="row collapse">
+					@Html.LabelFor(m => m.NumberOfTickets)
+					<div class="small-6 columns">
+						@Html.TextBoxFor(m => m.NumberOfTickets)
+					</div>
+					<div class="small-6 columns">
+						<span class="postfix">$@Html.Raw(Model.GameTicketCost)/ticket</span>
+					</div>
+				</div>
+				@Html.ValidationMessageFor(m => m.NumberOfTickets)
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="large-12 columns">
+				@Html.LabelTextAreaFor(m => m.CustomerNotes)
+				@Html.ValidationMessageFor(m => m.CustomerNotes)
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="large-12 columns">
+				<h4>Payment</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-2 columns end">
+				@Html.LabelTextBoxFor(m => m.AmountDue, null, new { @readonly = "true" })
+				@Html.ValidationMessageFor(m => m.AmountDue)
+			</div>
+		</div>
+		@*<div class="row">
+				<div class="large-12 columns">
+					@Html.LabelRadioButtonFor(m => m.PaymentMethod, Model.PaymentMethods)
+				</div>
+			</div>*@
+		@Html.HiddenFor(m => m.PaymentMethod)
+		<br />
+
+		<div class="row">
+			<div class="large-12 columns">
+				@Html.LabelCheckboxFor(m => m.UseAttendeeForPayee)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.PayeeFirstName)
+				@Html.ValidationMessageFor(m => m.PayeeFirstName)
+			</div>
+			<div class="large-6 columns">
+				@Html.LabelTextBoxFor(m => m.PayeeLastName)
+				@Html.ValidationMessageFor(m => m.PayeeLastName)
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns end">
+				@Html.LabelTextBoxFor(m => m.PayeeEmailAddress)
+				@Html.ValidationMessageFor(m => m.PayeeEmailAddress)
+			</div>
+		</div>
+		<div id="creditcardrow">
+			@* style="display:none" *@
+			<div class="row">
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.PayeeAddressStreet1)
+					@Html.ValidationMessageFor(m => m.PayeeAddressStreet1)
+				</div>
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.PayeeAddressStreet2)
+					@Html.ValidationMessageFor(m => m.PayeeAddressStreet2)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-6 columns">
+					@Html.LabelTextBoxFor(m => m.PayeeAddressCity)
+					@Html.ValidationMessageFor(m => m.PayeeAddressCity)
+				</div>
+				<div class="large-2 columns">
+					@Html.LabelDropDownFor(m => m.PayeeAddressStateId, Model.States)
+					@Html.ValidationMessageFor(m => m.PayeeAddressStateId)
+				</div>
+				<div class="large-1 columns end">
+					@Html.LabelTextBoxFor(m => m.PayeeAddressPostalCode, null, new { placeholder = "12345" })
+					@Html.ValidationMessageFor(m => m.PayeeAddressPostalCode)
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-2 columns">
+					@Html.LabelTextBoxFor(m => m.CardNumber, false, null, new { placeholder = "1111222233334444", data_braintree_name = "number", maxlength = "19" })
+					@Html.ValidationMessageFor(m => m.CardNumber)
+				</div>
+				<div class="large-1 columns">
+					@Html.LabelTextBoxFor(m => m.CardCvv, false, null, new { placeholder = "123", data_braintree_name = "cvv", maxlength = "5" })
+					@Html.ValidationMessageFor(m => m.CardCvv)
+				</div>
+				<div class="large-1 columns">
+					@Html.LabelTextBoxFor(m => m.CardExpireMonth, false, null, new { placeholder = "MM", data_braintree_name = "expiration_month", maxlength = "2", min = 1, max = 12 })
+					@Html.ValidationMessageFor(m => m.CardExpireMonth)
+				</div>
+				<div class="large-1 columns end">
+					@Html.LabelTextBoxFor(m => m.CardExpireYear, false, null, new { placeholder = "YYYY", data_braintree_name = "expiration_year", maxlength = "4", min = DateTime.Now.Year })
+					@Html.ValidationMessageFor(m => m.CardExpireYear)
+				</div>
+
+			</div>
+		</div>
+
+		@*<div class="row" id="paypalrow" style="display:none">
+				<div class="large-12 columns">
+					<div id="paypal-button"></div>
+					<br />
+				</div>
+			</div>*@
+
+		<div class="row">
+			<div class="large-12 columns">
+				@Html.RecaptchaV2(@ViewData["recapPublicKey"].ToString())
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-12 columns">
+				<p>
+					Advance parking passes can also be purchased from Jessica (972-334-1936 or jenglish@ridersbaseball.com) with the RoughRiders for $5. Parking passes purchased the day of the game are $10.
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-12 columns">
+				<p><strong>Your tickets will be available for pickup at Will Call the day of the game.</strong></p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-12 columns">
+				<input type="submit" value="Pay & Register Now" class="button" id="paymentButton">
+			</div>
+		</div>
+	}
+}
