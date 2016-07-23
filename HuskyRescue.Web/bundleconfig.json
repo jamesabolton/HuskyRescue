@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "Content/Scripts/Misc/expressive.annotations.validate.min.js",
+    "inputFiles": [
+      "Content/Scripts/Misc/expressive.annotations.validate.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/Scripts/jQuery/jquery.validate.min.js",
+    "inputFiles": [
+      "Content/Scripts/jQuery/jquery.validate.js"
+    ]
+  }
+]
