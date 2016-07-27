@@ -6,6 +6,8 @@
 *.Release.config
 
 Pvt-*.txt
+HuskyRescue.Web/App_Data/Applications/*.*
+HuskyRescue.Web/App_Data/*.json
 
 # User-specific files
 *.suo
