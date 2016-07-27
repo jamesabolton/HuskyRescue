@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="4f8bec01-59a0-41df-ad21-31d3e932f5a1" ChangeDateTime="07/23/2016 06:40:42">
+    <Property Name="ElementName" Value="[dbo].[Applicant].[Comments]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Applicant]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ApplicationFeeAmount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="68d82ea8-3365-464f-83bb-74dcf2551a19" ChangeDateTime="07/23/2016 06:42:26">
+    <Property Name="ElementName" Value="[dbo].[Applicant].[PaymentMethod]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Applicant]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ApplicationFeePaymentMethod" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d01e1800-0f2d-49d1-8f7e-f23118f13ece" ChangeDateTime="07/23/2016 06:42:30">
+    <Property Name="ElementName" Value="[dbo].[Applicant].[BraintreeTransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Applicant]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ApplicationFeeTransactionId" />
+  </Operation>
+</Operations>

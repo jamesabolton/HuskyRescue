@@ -112,6 +112,10 @@ namespace HuskyRescue.DataModel
         public string FilterAppDogsInterestedIn { get; set; }
         public Nullable<bool> IsCompleted { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<decimal> ApplicationFeeAmount { get; set; }
+        public string ApplicationFeePaymentMethod { get; set; }
+        public string ApplicationFeeTransactionId { get; set; }
+        public string Comments { get; set; }
     
         public virtual AddressState AddressState { get; set; }
         public virtual ICollection<ApplicantOwnedAnimal> ApplicantOwnedAnimals { get; set; }

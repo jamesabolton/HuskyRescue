@@ -814,11 +814,7 @@
     <Content Include="Scripts\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Content\Scripts\jQuery\jquery.blockUI.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\expressive.annotations.validate.js" />
-    <Content Include="Scripts\expressive.annotations.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
+    <None Include="bundleconfig.json" />
     <Content Include="yandex_5f8ed4f139de06e7.html" />
     <Content Include="Content\Scripts\Controller\Adoption-Index.min.js.map">
       <DependentUpon>Adoption-Index.min.js</DependentUpon>
@@ -969,9 +965,6 @@
     <Content Include="Views\Home\ThankYou.cshtml" />
     <Content Include="Views\Home\Policies.cshtml" />
     <Content Include="Views\Adoption\_RescueGroupAnimal.cshtml" />
-    <Content Include="Content\Scripts\Misc\expressive.annotations.validate.min.js.map">
-      <DependentUpon>expressive.annotations.validate.min.js</DependentUpon>
-    </Content>
     <Content Include="Content\Scripts\jQuery\php-date-formatter.min.js.map">
       <DependentUpon>php-date-formatter.min.js</DependentUpon>
     </Content>
@@ -1016,9 +1009,6 @@
     <Content Include="packages.config" />
     <Content Include="Content\Scripts\jQuery\jquery.validate.extramethods.min.js.map">
       <DependentUpon>jquery.validate.extramethods.min.js</DependentUpon>
-    </Content>
-    <Content Include="Content\Scripts\jQuery\jquery.validate.min.js.map">
-      <DependentUpon>jquery.validate.min.js</DependentUpon>
     </Content>
     <Content Include="Content\Scripts\Misc\slick.min.js.map">
       <DependentUpon>slick.min.js</DependentUpon>

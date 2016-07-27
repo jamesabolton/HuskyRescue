@@ -142,8 +142,8 @@ namespace HuskyRescue.BusinessLogic
 				if (result.IsSuccess())
 				{
 					requestResult.Succeeded = true;
-
-					var transTarget = result.Target;
+                    requestResult.NewKey = result.Target.Id;
+                    var transTarget = result.Target;
 					if (transTarget.PaymentInstrumentType == PaymentInstrumentType.CREDIT_CARD)
 					{
 					}

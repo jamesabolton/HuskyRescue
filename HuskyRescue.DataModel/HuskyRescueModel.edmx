@@ -232,6 +232,10 @@
           <Property Name="FilterAppDogsInterestedIn" Type="nvarchar" MaxLength="4000" />
           <Property Name="IsCompleted" Type="bit" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="ApplicationFeeAmount" Type="money" />
+          <Property Name="ApplicationFeePaymentMethod" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicationFeeTransactionId" Type="nvarchar" MaxLength="36" />
+          <Property Name="Comments" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ApplicantOwnedAnimals">
           <Key>
@@ -2559,6 +2563,10 @@
           <NavigationProperty Name="ApplicantStudentType" Relationship="Self.FK_ApplicantStudentType_Id___Applicant_StudentTypeId" FromRole="Applicant" ToRole="ApplicantStudentType" />
           <NavigationProperty Name="ApplicantType" Relationship="Self.FK_ApplicantType_Id___Applicant_ApplicantTypeId" FromRole="Applicant" ToRole="ApplicantType" />
           <NavigationProperty Name="ApplicantVeterinarian" Relationship="Self.FK_ApplicantVeterinarian_Id___Applicant_ApplicantVeterinarianId" FromRole="Applicant" ToRole="ApplicantVeterinarian" />
+          <Property Name="ApplicationFeeAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ApplicationFeePaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationFeeTransactionId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ApplicantOwnedAnimal">
           <Key>
@@ -4478,6 +4486,10 @@
           <EntitySetMapping Name="Applicants">
             <EntityTypeMapping TypeName="HuskyRescueModel.Applicant">
               <MappingFragment StoreEntitySet="Applicant">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ApplicationFeeTransactionId" ColumnName="ApplicationFeeTransactionId" />
+                <ScalarProperty Name="ApplicationFeePaymentMethod" ColumnName="ApplicationFeePaymentMethod" />
+                <ScalarProperty Name="ApplicationFeeAmount" ColumnName="ApplicationFeeAmount" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="ApplicantVeterinarianId" ColumnName="ApplicantVeterinarianId" />

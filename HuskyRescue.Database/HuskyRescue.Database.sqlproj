@@ -142,4 +142,7 @@
     <None Include="PopulateSystemTables-001.sql" />
     <None Include="PopulateAspTables-001.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="HuskyRescue.Database.refactorlog" />
+  </ItemGroup>
 </Project>
