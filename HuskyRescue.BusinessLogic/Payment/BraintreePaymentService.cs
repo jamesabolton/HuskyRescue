@@ -107,7 +107,7 @@ namespace HuskyRescue.BusinessLogic
 				}
 				if (!string.IsNullOrEmpty(customerNotes))
 				{
-					braintreeRequest.CustomFields.Add("customer_comments", customerNotes);
+                    braintreeRequest.CustomFields.Add("customer_comments", customerNotes.Length > 255 ? customerNotes.Substring(0,254) : customerNotes);
 				}
 				if (paymentType == PaymentType.CreditCard)
 				{

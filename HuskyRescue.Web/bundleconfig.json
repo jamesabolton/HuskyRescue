@@ -10,5 +10,11 @@
     "inputFiles": [
       "Content/Scripts/jQuery/jquery.validate.js"
     ]
+  },
+  {
+    "outputFileName": "Content/Scripts/Controller/Adoption-Apply.min.js",
+    "inputFiles": [
+      "Content/Scripts/Controller/Adoption-Apply.js"
+    ]
   }
 ]

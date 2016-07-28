@@ -797,7 +797,6 @@
     <Content Include="Content\Scripts\foundation\foundation-datepicker.min.js.map">
       <DependentUpon>foundation-datepicker.min.js</DependentUpon>
     </Content>
-    <Content Include="Forms\addoptionapplication.pdf" />
     <Content Include="Forms\adoption-contract.pdf" />
     <Content Include="Forms\foster-contract.pdf" />
     <Content Include="Forms\fosterapplication.pdf" />
@@ -842,9 +841,6 @@
     </Content>
     <Content Include="Content\Scripts\jQuery\jquery.mask.min.js.map">
       <DependentUpon>jquery.mask.min.js</DependentUpon>
-    </Content>
-    <Content Include="Content\Scripts\Controller\Adoption-Apply.min.js.map">
-      <DependentUpon>Adoption-Apply.min.js</DependentUpon>
     </Content>
     <Content Include="Content\Scripts\jQuery\jquery.blockUI.min.js.map">
       <DependentUpon>jquery.blockUI.min.js</DependentUpon>
@@ -968,6 +964,8 @@
     <Content Include="Content\Scripts\jQuery\php-date-formatter.min.js.map">
       <DependentUpon>php-date-formatter.min.js</DependentUpon>
     </Content>
+    <Content Include="Forms\adoptionapplication.pdf" />
+    <Content Include="Forms\volunteer-contract.pdf" />
     <None Include="Properties\PublishProfiles\prod.txhr.pubxml" />
     <None Include="Properties\PublishProfiles\test.txhr.pubxml" />
     <Content Include="Views\Golf\Index.cshtml" />

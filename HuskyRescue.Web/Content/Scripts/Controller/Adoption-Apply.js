@@ -95,7 +95,7 @@ PaymentType();
 
 var past = new Date();
 if ($('#AppDateBirth').val() === '') {
-    past.setTime(past.valueOf() - 21 * 365 * 24 * 60 * 60 * 1000);
+    past.setTime(past.valueOf() - (21 * 365 * 24 * 60 * 60 * 1000));
 }
 $('#AppDateBirth').fdatepicker('update', past);
 
@@ -432,4 +432,5 @@ $('input[name="IsStillOwned5"]').click(function () {
 $('input[name$="AppHomePhone"]').mask('000-000-0000');
 $('input[name$="AppCellPhone"]').mask('000-000-0000');
 $('input[name$="PhoneNumber"]').mask('000-000-0000');
+$('input[name$="ResidenceLandlordNumber"]').mask('000-000-0000');
 $('input[name$="AppAddressZip"]').mask('00000');

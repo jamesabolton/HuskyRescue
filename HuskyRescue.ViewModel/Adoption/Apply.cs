@@ -188,7 +188,6 @@ namespace HuskyRescue.ViewModel.Adoption
         public string ResidenceLandlordName { get; set; }
 
         [DisplayName("Complex/Landlord Phone number")]
-        [AssertThat("Length(ResidenceLandlordNumber) > 8 && Length(ResidenceLandlordNumber) < 15", ErrorMessage = "landlord phone must be a valid phone number 9 to 14 digits in length")]
         [RequiredIf("ResidenceOwnershipId == 2", ErrorMessage = "landlord phone number required")]
         [AssertThat("Length(ResidenceLandlordNumber) > 8 && Length(ResidenceLandlordNumber) < 16", ErrorMessage = "phone number must be between 9 and 15 digits")]
         public string ResidenceLandlordNumber { get; set; }
